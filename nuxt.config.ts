@@ -7,5 +7,5 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  css: ["~/assets/css/app.css"],
+  css: ["~/assets/css/app.css", "flag-icons/css/flag-icons.min.css"],
 })
