@@ -5,7 +5,7 @@
       Aide à l'immigration en France
     </h1>
     <div class="absolute mt-120 left-1/2 transform -translate-x-1/2">
-        <button class="boutonContact btn btn-outline rounded-full px-10 p-6 text-lg text-white hover:bg-[oklch(45%_.24_277.023)] hover:border-[oklch(45%_.24_277.023)]">Nous contacter</button>
+      <NuxtLink to="/contact"><button class="boutonContact btn btn-outline rounded-full px-10 p-6 text-lg text-white hover:bg-[oklch(45%_.24_277.023)] hover:border-[oklch(45%_.24_277.023)]">Nous contacter</button></NuxtLink>
     </div>
     <div class="absolute text-justify mt-200 left-1/2 transform -translate-x-1/2 bg-gray-50 p-15 text-xl">
       <p>Je m’appelle Michel Droubay, et je suis le créateur d’ODice. Fort de plusieurs années d’expérience en droit des étrangers, j’ai accompagné des centaines de personnes dans leurs démarches administratives complexes, avec un focus particulier sur les demandes de titre de séjour, les procédures d’asile et les questions de régularisation.</p>
