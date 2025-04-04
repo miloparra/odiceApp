@@ -40,6 +40,16 @@ const form = reactive({
   moreInfo: ''
 })
 
+const resetForm = () => {
+  form.lastName = '',
+  form.firstName = '',
+  form.birthDate = '',
+  form.landDate = '',
+  form.situation = '',
+  form.requestMotif = '',
+  form.moreInfo = ''
+}
+
 const submitForm = async () => {
   try {
     await $fetch('/api/contact', {
@@ -47,6 +57,7 @@ const submitForm = async () => {
       body: form
     })
     alert('Message envoyé !')
+    resetForm()
   } catch (error) {
     alert('Erreur lors de l\'envoi du message')
   }
