@@ -24,7 +24,7 @@ const route = useRoute()
           <li><NuxtLink to="/contact">Contact</NuxtLink></li>
         </ul>
       </div>
-      <img class="w-20 lg:w-27 ml-2" :src="route.path === '/about' ? fullLogoW : fullLogoB" alt="">
+      <NuxtLink to="/about"><img class="w-20 lg:w-27 ml-2" :src="route.path === '/about' ? fullLogoW : fullLogoB" alt=""></NuxtLink>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1 space-x-10" :class="{
