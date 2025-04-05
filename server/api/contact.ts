@@ -10,9 +10,9 @@ export default defineEventHandler(async (event) => {
             user: config.SMTP_USER,
             pass: config.SMTP_PASS
         },
-        tls: {
-            rejectUnauthorized: false, // <-- C’est ça qui contourne l’erreur
-        }
+        tls: process.env.NODE_ENV === 'development'
+            ? { rejectUnauthorized: false }
+            : undefined, // rien en prod, sécurisé par défaut
     })
 
     const mailOptions = {
