@@ -1,9 +1,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import Navbar from '~/components/Navbar.vue'
 import fullLogoW from '@/public/logo/fullLogoW.png';
 import fullLogoB from '@/public/logo/fullLogoB.png';
-
 const route = useRoute()
 </script>
 
