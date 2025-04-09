@@ -7,7 +7,7 @@
       <div>
         <h1 class="text-center text-4xl pb-10">Contact me</h1>
         <div class="flex justify-center items-center">
-          <div class="grid bg-amber-500 col-2 gap-5">
+          <div class="grid col-2 gap-5">
             <input v-model="form.lastName" type="text" class="border border-gray-300 rounded-full p-2 px-6"
               placeholder="Nom">
             <input v-model="form.firstName" type="text" class="border border-gray-300 rounded-full p-2 px-6"
