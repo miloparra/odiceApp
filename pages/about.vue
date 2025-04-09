@@ -2,6 +2,7 @@
   <div class="relative w-full h-[2000px] top-[-65px]">
     <img class="absolute w-full h-screen filter brightness-60 object-cover" src="public/bateau.jpeg" alt="">
     <h1 class="
+          welcomeTitle
           absolute 
           text-center
           mt-50

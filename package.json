@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^3.4.0",
+    "@nuxt/fonts": "^0.11.1",
     "@tailwindcss/vite": "^4.1.2",
     "contentful": "^11.5.12",
     "daisyui": "^5.0.12",

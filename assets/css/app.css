@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+html {
+    font-family: 'Kantumruy Pro';
+}
+
 a {
     cursor: pointer;
+}
+
+.welcomeTitle {
+    font-family: 'DM Serif Text';
 }

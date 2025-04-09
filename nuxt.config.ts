@@ -12,5 +12,6 @@ export default defineNuxtConfig({
     SMTP_USER: process.env.SMTP_USER,
     SMTP_PASS: process.env.SMTP_PASS,
     SMTP_TO: process.env.SMTP_TO,
-  }
+  },
+  modules: ["@nuxt/fonts"]
 })
