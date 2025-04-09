@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 justify-items-center">
       <div class="card bg-base-100 w-9/10 lg:w-96 shadow-sm">
         <figure>
-          <img class="h-70 object-cover" src="../public/lyon1.jpg" alt="Visa" />
+          <img class="h-70 scale-150 object-cover" src="../public/pictogram/1.png" alt="Visa" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Visa long séjour</h2>
@@ -15,7 +15,7 @@
       </div>
       <div class="card bg-base-100 w-9/10 lg:w-96 shadow-sm">
         <figure>
-          <img class="h-70 object-cover" src="../public/eiffel1.jpg" alt="Nat" />
+          <img class="h-70 scale-150 object-cover" src="../public/pictogram/2.png" alt="Nat" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Nationalité</h2>
@@ -27,7 +27,7 @@
       </div>
       <div class="card bg-base-100 w-9/10 lg:w-96 shadow-sm">
         <figure>
-          <img class="h-70 object-cover" src="../public/louvre1.jpg" alt="Renew" />
+          <img class="h-70 scale-150 object-cover" src="../public/pictogram/3.png" alt="Renew" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Renouvellement de titre de séjour</h2>
@@ -39,7 +39,7 @@
       </div>
       <div class="card bg-base-100 w-9/10 lg:w-96 shadow-sm">
         <figure>
-          <img class="h-70 object-cover" src="../public/brasserie1.jpg" alt="Sejour" />
+          <img class="h-70 scale-150 object-cover" src="../public/pictogram/4.png" alt="Sejour" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Titre de séjour</h2>
@@ -51,7 +51,7 @@
       </div>
       <div class="card bg-base-100 w-9/10 lg:w-96 shadow-sm">
         <figure>
-          <img class="h-70 object-cover" src="../public/arc_triomphe1.jpg" alt="Regularisation" />
+          <img class="h-70 scale-150 object-cover" src="../public/pictogram/5.png" alt="Regularisation" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Régularisation</h2>
@@ -63,7 +63,7 @@
       </div>
       <div class="card bg-base-100 w-9/10 lg:w-96 shadow-sm">
         <figure>
-          <img class="h-70 object-cover" src="../public/volcan1.jpg" alt="Admin" />
+          <img class="h-70 scale-150 object-cover" src="../public/pictogram/6.png" alt="Admin" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Démarches administratives</h2>
