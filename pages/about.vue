@@ -1,27 +1,18 @@
 <template>
   <div class="relative w-full h-[2000px] top-[-65px]">
     <img class="absolute w-full h-screen filter brightness-60 object-cover" src="public/bateau.jpeg" alt="">
-    <h1 class="
-          welcomeTitle
-          absolute 
+    <div class="absolute w-full h-screen">
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-10">
+        <h1 class="
           text-center
-          mt-50
-          lg:mt-65
-          left-1/2
-          transform
-          -translate-x-1/2
+          welcomeTitle
           text-white
           text-4xl
           lg:text-6xl">
-      Aide à l'immigration en France
-    </h1>
-    <div class="
-      absolute
-      mt-90
-      lg:mt-105
-      left-1/2 transform -translate-x-1/2">
-      <NuxtLink to="/contact">
-        <button class="
+          Aide à l'immigration en France
+        </h1>
+        <NuxtLink to="/contact" class="flex justify-center">
+          <button class="
             boutonContact btn
             btn-outline
             rounded-full
@@ -32,9 +23,10 @@
             text-white
             hover:bg-[oklch(45%_.24_277.023)]
             hover:border-[oklch(45%_.24_277.023)]">
-          Nous contacter
-        </button>
-      </NuxtLink>
+            Nous contacter
+          </button>
+        </NuxtLink>
+      </div>
     </div>
     <div style="margin-top: calc(100vh + 45px)" class="
         absolute
