@@ -13,5 +13,6 @@ export default defineNuxtConfig({
     SMTP_PASS: process.env.SMTP_PASS,
     SMTP_TO: process.env.SMTP_TO,
   },
-  modules: ["@nuxt/fonts"]
+  modules: ["@nuxt/fonts"],
+  plugins: ['~/plugins/fontawesome.js']
 })
