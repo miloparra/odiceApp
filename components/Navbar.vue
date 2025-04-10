@@ -57,7 +57,7 @@ const route = useRoute()
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="filter brightness-60 hover:filter hover:brightness-100 mr-4"><span
+            <a class="filter hover:filter hover:brightness-100 mr-4"><span
                     class="fi fi-fr w-6 h-4 rounded-full"></span></a>
             <a class="filter brightness-60 hover:filter hover:brightness-100 mr-4"><span
                     class="fi fi-gb w-6 h-4 rounded-full"></span></a>
