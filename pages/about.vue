@@ -1,18 +1,18 @@
 <template>
-  <div class="relative w-full h-[2000px] top-[-65px]">
-    <img class="absolute w-full h-screen filter brightness-60 object-cover" src="public/bateau.jpeg" alt="">
-    <div class="absolute w-full h-screen">
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-10">
-        <h1 class="
+  <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-60 object-cover"
+    src="public/bateau.jpeg" alt="">
+  <div class="reactive w-full h-screen top-[-65px]">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-10">
+      <h1 class="
           text-center
           welcomeTitle
           text-white
           text-4xl
           lg:text-6xl">
-          Aide à l'immigration en France
-        </h1>
-        <NuxtLink to="/contact" class="flex justify-center">
-          <button class="
+        Aide à l'immigration en France
+      </h1>
+      <NuxtLink to="/contact" class="flex justify-center">
+        <button class="
             boutonContact btn
             btn-outline
             rounded-full
@@ -23,16 +23,16 @@
             text-white
             hover:bg-[oklch(45%_.24_277.023)]
             hover:border-[oklch(45%_.24_277.023)]">
-            Nous contacter
-          </button>
-        </NuxtLink>
-      </div>
+          Nous contacter
+        </button>
+      </NuxtLink>
     </div>
-    <div style="margin-top: calc(100vh + 45px)" class="
-        absolute
+  </div>
+  <div class="flex justify-center mt-[-65px]">
+    <div class="
         text-justify
         w-5/6
-        left-1/2 transform -translate-x-1/2
+        mt-10 mb-10
         bg-gray-200
         p-7 lg:p-15
         text-base
