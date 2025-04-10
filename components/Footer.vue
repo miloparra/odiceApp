@@ -8,10 +8,10 @@
             h-30
             shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]
             z-50">
-        <NuxtLink to="" class="hover:underline">Politique de confidentialité</NuxtLink>
+        <NuxtLink to="/confidentiality" class="hover:underline">Politique de confidentialité</NuxtLink>
         <p class="hidden lg:block">|</p>
-        <NuxtLink to="" class="hover:underline">Conditions générales d'utilisation (CGU)</NuxtLink>
+        <NuxtLink to="/cgu" class="hover:underline">Conditions générales d'utilisation (CGU)</NuxtLink>
         <p class="hidden lg:block">|</p>
-        <NuxtLink to="" class="hover:underline">Conditions générales de vente (CGV)</NuxtLink>
+        <NuxtLink to="/cgv" class="hover:underline">Conditions générales de vente (CGV)</NuxtLink>
     </div>
 </template>
