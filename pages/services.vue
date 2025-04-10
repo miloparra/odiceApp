@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center items-center mt-10 mb-10">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 justify-items-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 justify-items-center">
       <div class="card bg-base-100 w-9/10 lg:w-96 shadow-sm">
         <figure>
           <img class="h-70 scale-150 object-cover" src="../public/pictogram/1.png" alt="Visa" />
