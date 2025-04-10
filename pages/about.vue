@@ -30,6 +30,7 @@
   </div>
   <div class="flex justify-center mt-[-65px]">
     <div class="
+        relative
         text-justify
         w-5/6
         mt-10 mb-10
@@ -37,6 +38,7 @@
         p-7 lg:p-15
         text-base
         lg:text-lg">
+      <p class="guillemets absolute top-[-18px] lg:top-[-25px] left-[2px] text-8xl lg:text-9xl text-zinc-600">"</p>
       <img class="
         float-left
         w-70
@@ -57,6 +59,8 @@
         la complexité administrative. Que vous soyez un particulier ou une entreprise, je vous accompagne dans la
         gestion de vos démarches administratives liées à la régularisation, au séjour, à l’asile, ou à la nationalité,
         en vous offrant des outils pratiques, des explications détaillées et une assistance personnalisée.</p>
+      <p class="guillemets absolute right-[5px] bottom-[-75px] lg:bottom-[-100px] text-8xl lg:text-9xl text-zinc-600">"
+      </p>
     </div>
   </div>
 </template>
