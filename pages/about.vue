@@ -44,8 +44,7 @@
         w-70
         h-70
         object-cover
-        p-7
-        lg:pr-7 lg:pt-0 lg:pb-7 lg:pl-0" src="../public/michel.jpeg" />
+        p-7 pb-11 lg:pr-7 lg:pt-0 lg:pb-7 lg:pl-0" src="../public/michel.jpeg" />
       <p>Je m’appelle Michel Droubay, et je suis le créateur d’ODice. Fort de plusieurs années d’expérience en droit des
         étrangers, j’ai accompagné des centaines de personnes dans leurs démarches administratives complexes, avec un
         focus particulier sur les demandes de titre de séjour, les procédures d’asile et les questions de
