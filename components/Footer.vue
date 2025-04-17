@@ -3,7 +3,7 @@
             flex flex-col lg:flex-row 
             justify-center items-center
             text-sm lg:text-base
-            space-y-2 lg:space-x-10
+            space-y-2 lg:space-y-0 lg:space-x-10
             w-full
             h-30
             shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]
