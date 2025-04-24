@@ -1,3 +1,13 @@
+<script setup>
+import { client } from '@/lib/contentful'
+
+const { data: textes } = await useAsyncData('textes-home', async () => {
+  const entry = await client.getEntry('6IqRjKT0Qd8qACmlIDYSkd')
+  return entry.fields
+})
+</script>
+
+
 <template>
   <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-60 object-cover"
     src="public/bateau.jpeg" alt="">
@@ -9,7 +19,7 @@
           text-white
           text-4xl
           lg:text-6xl">
-        Aide à l'immigration en France
+        {{ textes?.title }}
       </h1>
       <NuxtLink to="/contact" class="flex justify-center">
         <button class="
@@ -45,19 +55,7 @@
         h-70
         object-cover
         p-7 pb-11 lg:pr-7 lg:pt-0 lg:pb-7 lg:pl-0" src="../public/michel.jpeg" />
-      <p>Je m’appelle Michel Droubay, et je suis le créateur d’ODice. Fort de plusieurs années d’expérience en droit des
-        étrangers, j’ai accompagné des centaines de personnes dans leurs démarches administratives complexes, avec un
-        focus particulier sur les demandes de titre de séjour, les procédures d’asile et les questions de
-        régularisation.</p>
-      <br>
-      <p>Mon parcours m’a amené à travailler au sein d’associations solidaires et sur des projets humanitaires en France
-        et à l’étranger. J’ai ainsi acquis une expertise pratique du système administratif français et une profonde
-        compréhension des défis rencontrés par les étrangers dans leurs démarches.</p>
-      <br>
-      <p>ODice est né de ma volonté d’aider de manière simple, claire et accessible tous ceux qui se retrouvent face à
-        la complexité administrative. Que vous soyez un particulier ou une entreprise, je vous accompagne dans la
-        gestion de vos démarches administratives liées à la régularisation, au séjour, à l’asile, ou à la nationalité,
-        en vous offrant des outils pratiques, des explications détaillées et une assistance personnalisée.</p>
+      <p class="whitespace-pre-line">{{ textes?.presentation }}</p>
       <p class="guillemets absolute right-[5px] bottom-[-75px] lg:bottom-[-100px] text-8xl lg:text-9xl text-zinc-600">"
       </p>
     </div>
