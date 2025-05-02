@@ -3,6 +3,12 @@ import { useRoute } from 'vue-router'
 import fullLogoW from '@/public/logo/fullLogoW.png';
 import fullLogoB from '@/public/logo/fullLogoB.png';
 const route = useRoute()
+const lang = useLang()
+
+function changeLang(locale) {
+    lang.value = locale
+    useCookie('lang').value = locale
+}
 </script>
 
 <template>
@@ -57,12 +63,14 @@ const route = useRoute()
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="filter hover:filter hover:brightness-100 mr-4"><span
-                    class="fi fi-fr w-6 h-4 rounded-full"></span></a>
-            <a class="filter brightness-60 hover:filter hover:brightness-100 mr-4"><span
-                    class="fi fi-gb w-6 h-4 rounded-full"></span></a>
-            <a class="filter brightness-60 hover:filter hover:brightness-100 mr-4"><span
-                    class="fi fi-es w-6 h-4 rounded-full"></span></a>
+            <a :class="['filter hover:filter hover:brightness-100 mr-4', lang === 'fr' ? '' : 'brightness-60']"
+                @click="changeLang('fr')">
+                <span class="fi fi-fr w-6 h-4 rounded-full"></span>
+            </a>
+            <a :class="['filter hover:filter hover:brightness-100 mr-4', lang === 'en-US' ? '' : 'brightness-60']"
+                @click="changeLang('en-US')">
+                <span class="fi fi-gb w-6 h-4 rounded-full"></span>
+            </a>
         </div>
     </div>
 </template>
