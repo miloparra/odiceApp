@@ -9,6 +9,14 @@ function changeLang(locale) {
     lang.value = locale
     useCookie('lang').value = locale
 }
+
+const aboutTab = computed(() =>
+  lang.value === 'fr' ? 'Qui suis-je ?' : 'Who am I ?'
+)
+
+const resourcesTab = computed(() =>
+  lang.value === 'fr' ? 'Ressources' : 'Resources'
+)
 </script>
 
 <template>
@@ -27,13 +35,13 @@ function changeLang(locale) {
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                     <li>
-                        <NuxtLink to="/about">Qui suis-je ?</NuxtLink>
+                        <NuxtLink to="/about">{{ aboutTab }}</NuxtLink>
                     </li>
                     <li>
                         <NuxtLink to="/services">Services</NuxtLink>
                     </li>
                     <li>
-                        <NuxtLink to="/ressources">Ressources</NuxtLink>
+                        <NuxtLink to="/ressources">{{ resourcesTab }}</NuxtLink>
                     </li>
                     <li>
                         <NuxtLink to="/contact">Contact</NuxtLink>
@@ -49,16 +57,16 @@ function changeLang(locale) {
                 'text-black': route.path !== '/about'
             }">
                 <li>
-                    <NuxtLink to="/about">QUI SUIS-JE ?</NuxtLink>
+                    <NuxtLink to="/about" class="uppercase">{{ aboutTab }}</NuxtLink>
                 </li>
                 <li>
-                    <NuxtLink to="/services">SERVICES</NuxtLink>
+                    <NuxtLink to="/services" class="uppercase">Services</NuxtLink>
                 </li>
                 <li>
-                    <NuxtLink to="/ressources">RESSOURSES</NuxtLink>
+                    <NuxtLink to="/ressources" class="uppercase">{{ resourcesTab }}</NuxtLink>
                 </li>
                 <li>
-                    <NuxtLink to="/contact">CONTACT</NuxtLink>
+                    <NuxtLink to="/contact" class="uppercase">Contact</NuxtLink>
                 </li>
             </ul>
         </div>
