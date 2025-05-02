@@ -1,10 +1,23 @@
 <script setup>
 import { client } from '@/lib/contentful'
 
-const { data: textes } = await useAsyncData('textes-home', async () => {
-  const entry = await client.getEntry('6IqRjKT0Qd8qACmlIDYSkd')
-  return entry.fields
+const lang = useLang()
+
+const { data: about, refresh } = await useAsyncData(`about-${lang.value}`, async () => {
+  const entries = await client.getEntries({
+    content_type: 'about',
+    locale: lang.value
+  })
+  return entries.items[0].fields
 })
+
+watch(lang, () => {
+  refresh()
+})
+
+const contactLabel = computed(() =>
+  lang.value === 'fr' ? 'Nous contacter' : 'Contact us'
+)
 </script>
 
 
@@ -19,7 +32,7 @@ const { data: textes } = await useAsyncData('textes-home', async () => {
           text-white
           text-4xl
           lg:text-6xl">
-        {{ textes?.title }}
+        {{ about?.title }}
       </h1>
       <NuxtLink to="/contact" class="flex justify-center">
         <button class="
@@ -33,7 +46,7 @@ const { data: textes } = await useAsyncData('textes-home', async () => {
             text-white
             hover:bg-[oklch(45%_.24_277.023)]
             hover:border-[oklch(45%_.24_277.023)]">
-          Nous contacter
+            {{ contactLabel }}
         </button>
       </NuxtLink>
     </div>
@@ -55,7 +68,7 @@ const { data: textes } = await useAsyncData('textes-home', async () => {
         h-70
         object-cover
         p-7 pb-11 lg:pr-7 lg:pt-0 lg:pb-7 lg:pl-0" src="../public/michel.jpeg" />
-      <p class="whitespace-pre-line">{{ textes?.presentation }}</p>
+      <p class="whitespace-pre-line">{{ about?.presentation }}</p>
       <p class="guillemets absolute right-[5px] bottom-[-75px] lg:bottom-[-100px] text-8xl lg:text-9xl text-zinc-600">"
       </p>
     </div>
