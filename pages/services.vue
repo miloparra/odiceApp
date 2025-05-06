@@ -1,13 +1,52 @@
 <script setup>
 import { client } from '@/lib/contentful'
 
+const lang = useLang()
+const defaultLocale = 'en-US'
+
 const services = ref([])
 
-onMounted(async () => {
-  const res = await client.getEntries({
-    content_type: 'services'
-  })
-  services.value = res.items
+async function fetchServices(locale) {
+  try {
+    // 1. Localized request
+    const localized = await client.getEntries({
+      content_type: 'services',
+      locale
+    })
+
+    // 2. Default request (for non-localized fields)
+    const defaults = await client.getEntries({
+      content_type: 'services',
+      locale: defaultLocale
+    })
+
+    // 3. Fusion
+    services.value = localized.items.map(service => {
+      const defaultService = defaults.items.find(
+        s => s.sys.id === service.sys.id
+      )
+
+      return {
+        ...service,
+        fields: {
+          ...service.fields,
+          pictogram: defaultService?.fields?.pictogram
+        }
+      }
+    })
+  } catch (err) {
+    console.error('❌ Erreur de récupération des services:', err)
+  }
+}
+
+// Initial load
+onMounted(() => {
+  fetchServices(lang.value)
+})
+
+// Refresh on lang change
+watch(lang, (newLang) => {
+  fetchServices(newLang)
 })
 </script>
 
