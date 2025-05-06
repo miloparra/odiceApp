@@ -1,13 +1,53 @@
 <script setup>
 import { client } from '@/lib/contentful'
 
+const lang = useLang()
+const defaultLocale = 'en-US'
+
 const ressources = ref([])
 
-onMounted(async () => {
-  const res = await client.getEntries({
-    content_type: 'ressources'
-  })
-  ressources.value = res.items
+async function fetchRessources(locale) {
+  try {
+    // 1. Localized request
+    const localized = await client.getEntries({
+      content_type: 'ressources',
+      locale
+    })
+
+    // 2. Default request (for non-localized fields)
+    const defaults = await client.getEntries({
+      content_type: 'ressources',
+      locale: defaultLocale
+    })
+
+    // 3. Fusion
+    ressources.value = localized.items.map(ressource => {
+      const defaultRessource = defaults.items.find(
+        s => s.sys.id === ressource.sys.id
+      )
+
+      return {
+        ...ressource,
+        fields: {
+          ...ressource.fields,
+          pictogram: defaultRessource?.fields?.pictogram,
+          document: defaultRessource?.fields?.document
+        }
+      }
+    })
+  } catch (err) {
+    console.error('❌ Erreur de récupération des ressources:', err)
+  }
+}
+
+// Initial load
+onMounted(() => {
+  fetchRessources(lang.value)
+})
+
+// Refresh on lang change
+watch(lang, (newLang) => {
+  fetchRessources(newLang)
 })
 </script>
 
