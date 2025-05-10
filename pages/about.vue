@@ -1,10 +1,23 @@
 <script setup>
-import { client } from '@/lib/contentful'
+const { $contentful } = useNuxtApp()
+
+useHead({
+  title: 'Odicé - Accompagnement juridique à l’immigration | Michel Droubay',
+  meta: [
+    {
+      name: 'description',
+      content: 'Odicé, fondée par Michel Droubay, propose un accompagnement juridique spécialisé pour les personnes souhaitant s’installer durablement en France.'
+    },
+    { property: 'og:title', content: 'Odicé - Aide à l’immigration en France' },
+    { property: 'og:description', content: 'Présentation de Michel Droubay et de la structure Odicé, spécialisée dans l’accompagnement à l’immigration en France.' },
+    { property: 'og:url', content: 'https://odispe.fr' }
+  ]
+})
 
 const lang = useLang()
 
 const { data: about, refresh } = await useAsyncData(`about-${lang.value}`, async () => {
-  const entries = await client.getEntries({
+  const entries = await $contentful.getEntries({
     content_type: 'about',
     locale: lang.value
   })
