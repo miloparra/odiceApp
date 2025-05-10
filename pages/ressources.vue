@@ -49,7 +49,7 @@ async function fetchRessources(locale) {
       }
     })
   } catch (err) {
-    console.error('❌ Erreur de récupération des ressources:', err)
+    console.error('❌ Resource recovery error:', err)
   }
 }
 
