@@ -1,5 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
+import { onMounted, onUnmounted, ref, computed } from 'vue'
 import fullLogoW from '@/public/logo/fullLogoW.png';
 import fullLogoB from '@/public/logo/fullLogoB.png';
 const route = useRoute()
@@ -17,16 +18,36 @@ const aboutTab = computed(() =>
 const resourcesTab = computed(() =>
   lang.value === 'fr' ? 'Ressources' : 'Resources'
 )
+
+const scrolled = ref(false)
+const threshold = 80 // px before the fond change
+
+const handleScroll = () => {
+  scrolled.value = window.scrollY > threshold
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
+const isTranparentTheme = computed(() => {
+  return route.path === '/about' && !scrolled.value
+})
+
+const navbarClasses = computed(() => isTranparentTheme.value ? 'bg-transparent' : 'bg-white shadow-sm')
+const logoSrc = computed(() => isTranparentTheme.value ? fullLogoW : fullLogoB)
+const textColorClass = computed(() => isTranparentTheme.value ? 'text-white font-medium' : 'text-black')
 </script>
 
 <template>
-    <div class="navbar sticky top-0 z-50" :class="{
-        'shadow-sm bg-white': route.path !== '/about'
-    }">
+    <div class="navbar sticky top-0 z-50 transition-colors duration-1000" :class="navbarClasses">
         <div class="navbar-start">
             <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden"
-                    :class="{ 'text-white': route.path === '/about' }">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden" :class="textColorClass">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,14 +69,12 @@ const resourcesTab = computed(() =>
                     </li>
                 </ul>
             </div>
-            <NuxtLink to="/about"><img class="w-20 lg:w-27 ml-2" :src="route.path === '/about' ? fullLogoW : fullLogoB"
-                    alt=""></NuxtLink>
+            <NuxtLink to="/about">
+                <img class="w-20 lg:w-27 ml-2" :src="logoSrc" alt="Logo" />
+            </NuxtLink>
         </div>
         <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1 space-x-10" :class="{
-                'text-white font-semibold': route.path === '/about',
-                'text-black': route.path !== '/about'
-            }">
+            <ul class="menu menu-horizontal px-1 space-x-10" :class="textColorClass">
                 <li>
                     <NuxtLink to="/about" class="uppercase">{{ aboutTab }}</NuxtLink>
                 </li>
