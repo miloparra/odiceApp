@@ -48,7 +48,7 @@ async function fetchServices(locale) {
       }
     })
   } catch (err) {
-    console.error('❌ Erreur de récupération des services:', err)
+    console.error('❌ Services recovery error:', err)
   }
 }
 
