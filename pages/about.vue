@@ -15,17 +15,26 @@ useHead({
 })
 
 const lang = useLang()
+const about = ref(null)
 
-const { data: about, refresh } = await useAsyncData(`about-${lang.value}`, async () => {
-  const entries = await $contentful.getEntries({
-    content_type: 'about',
-    locale: lang.value
-  })
-  return entries.items[0].fields
+async function fetchAbout(locale) {
+  try {
+    const entries = await $contentful.getEntries({
+      content_type: 'about',
+      locale
+    })
+    about.value = entries.items[0]?.fields || null
+  } catch (err) {
+    console.error('❌ "About" recovery error:', err)
+  }
+}
+
+onMounted(() => {
+  fetchAbout(lang.value)
 })
 
-watch(lang, () => {
-  refresh()
+watch(lang, (newLang) => {
+  fetchAbout(newLang)
 })
 
 const contactLabel = computed(() =>
