@@ -1,5 +1,18 @@
 <script setup>
-import { client } from '@/lib/contentful'
+const { $contentful } = useNuxtApp()
+
+useHead({
+  title: 'Odicé - Ressources gratuites | Aide à l’immigration',
+  meta: [
+    {
+      name: 'description',
+      content: 'Accédez à des documents gratuits préparés par Odicé : guides pratiques, fiches d’information, listes de questions, et ressources utiles pour préparer vos démarches en France.'
+    },
+    { property: 'og:title', content: 'Odicé - Guides & documents juridiques' },
+    { property: 'og:description', content: 'Téléchargez des ressources juridiques fiables créées par Odicé pour faciliter votre projet d’installation en France.' },
+    { property: 'og:url', content: 'https://odispe.fr/ressources' }
+  ]
+})
 
 const lang = useLang()
 const defaultLocale = 'en-US'
@@ -9,13 +22,13 @@ const ressources = ref([])
 async function fetchRessources(locale) {
   try {
     // 1. Localized request
-    const localized = await client.getEntries({
+    const localized = await $contentful.getEntries({
       content_type: 'ressources',
       locale
     })
 
     // 2. Default request (for non-localized fields)
-    const defaults = await client.getEntries({
+    const defaults = await $contentful.getEntries({
       content_type: 'ressources',
       locale: defaultLocale
     })
