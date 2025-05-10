@@ -1,5 +1,18 @@
 <script setup>
-import { client } from '@/lib/contentful'
+const { $contentful } = useNuxtApp()
+
+useHead({
+  title: 'Odicé - Services juridiques | Immigration en France',
+  meta: [
+    {
+      name: 'description',
+      content: 'Odicé propose un accompagnement complet : demandes de visa, régularisation, titres de séjour, naturalisation, droit de la famille, et autres démarches juridiques liées à l’immigration.'
+    },
+    { property: 'og:title', content: 'Odicé - Services d’accompagnement juridique' },
+    { property: 'og:description', content: 'Découvrez les services juridiques proposés par Odicé pour vous aider dans vos démarches administratives et migratoires en France.' },
+    { property: 'og:url', content: 'https://odispe.fr/services' }
+  ]
+})
 
 const lang = useLang()
 const defaultLocale = 'en-US'
@@ -9,13 +22,13 @@ const services = ref([])
 async function fetchServices(locale) {
   try {
     // 1. Localized request
-    const localized = await client.getEntries({
+    const localized = await $contentful.getEntries({
       content_type: 'services',
       locale
     })
 
     // 2. Default request (for non-localized fields)
-    const defaults = await client.getEntries({
+    const defaults = await $contentful.getEntries({
       content_type: 'services',
       locale: defaultLocale
     })
