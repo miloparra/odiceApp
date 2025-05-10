@@ -46,13 +46,13 @@ export default defineNuxtConfig({
       ]
     }
   },
-
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   vite: {
     plugins: [tailwindcss()],
   },
   css: ["~/assets/css/app.css", "flag-icons/css/flag-icons.min.css"],
+  ssr: true,
   runtimeConfig: {
     SMTP_USER: process.env.SMTP_USER,
     SMTP_PASS: process.env.SMTP_PASS,
