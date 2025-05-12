@@ -77,7 +77,7 @@ const submitForm = async () => {
             <div class="col-span-2 sm:col-span-1">
               <label for="with-corner-hint" class="block mb-1 ml-5 text-sm font-medium text-gray-700 w-full">{{ birthLabel }}</label>
               <input v-model="form.birthDate" type="date" id="with-corner-hint"
-                class="border border-gray-300 rounded-full p-2 px-6 w-full">
+                class="border border-gray-300 rounded-full p-2 px-10 w-full">
             </div>
             <div class="col-span-2 sm:col-span-1">
               <label for="with-corner-hint" class="block mb-1 ml-5 text-sm font-medium text-gray-700 w-full">{{ arrivalLabel }}</label>
