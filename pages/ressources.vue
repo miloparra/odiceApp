@@ -67,7 +67,7 @@ watch(lang, (newLang) => {
 <template>
   <div class="flex justify-center items-center mt-10 mb-10">
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 justify-items-center">
-      <div v-for="ressource in ressources" :key="ressource.sys.id" class="card bg-base-100 w-9/10 lg:w-96 shadow-sm">
+      <div v-for="ressource in ressources" :key="ressource.sys.id" class="card bg-white w-9/10 lg:w-96 shadow-sm">
         <figure>
           <img class="h-40 scale-150 object-cover"
           :src="`https:${ressource.fields.pictogram.fields.file.url}`"
