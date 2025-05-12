@@ -24,7 +24,7 @@ const arrivalLabel = computed(() =>
   lang.value === 'fr' ? 'Arrivée en France' : 'Arrival in France'
 )
 const sendButtonLabel = computed(() =>
-  lang.value === 'fr' ? 'Emvoyer' : 'Send'
+  lang.value === 'fr' ? 'Envoyer' : 'Send'
 )
 const form = reactive({
   lastName: '',
