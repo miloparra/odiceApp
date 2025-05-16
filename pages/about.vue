@@ -45,7 +45,7 @@ const contactLabel = computed(() =>
 
 <template>
   <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-60 object-cover"
-    src="public/bateau.jpeg" alt="">
+    src="public/volcanIA1.jpg" alt="">
   <div class="reactive w-full h-screen top-[-65px]">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-10">
       <h1 class="
