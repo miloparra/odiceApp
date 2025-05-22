@@ -44,8 +44,8 @@ const contactLabel = computed(() =>
 
 
 <template>
-  <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-60 object-cover"
-    src="public/volcanIA1.jpg" alt="">
+  <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-80 object-cover"
+    src="public/volcanIA2.png" alt="">
   <div class="reactive w-full h-screen top-[-65px]">
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-10">
       <h1 class="
@@ -79,7 +79,7 @@ const contactLabel = computed(() =>
         text-justify
         w-5/6
         mt-10 mb-10
-        bg-gray-200
+        bg-gray-100
         p-7 lg:p-15
         text-base
         lg:text-lg">
