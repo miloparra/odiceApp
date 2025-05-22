@@ -26,25 +26,62 @@ const arrivalLabel = computed(() =>
 const sendButtonLabel = computed(() =>
   lang.value === 'fr' ? 'Envoyer' : 'Send'
 )
+const situationLabel = computed(() => 
+  lang.value === 'fr' ? 'Votre situation' : 'Your situation'
+)
+
+const placeholders = computed(() => ({
+  organizationName: lang.value === 'fr' ? "Nom de l'association" : 'Organization name',
+  lawyerName: lang.value === 'fr' ? 'Nom du cabinet' : "Lawyer's name",
+  companyName: lang.value === 'fr' ? "Nom de l'entreprise" : 'Company name',
+  lastName: lang.value === 'fr' ? 'Nom' : 'Last name',
+  firstName: lang.value === 'fr' ? 'Prénom' : 'First name',
+  phoneNumber: lang.value === 'fr' ? 'Numéro de téléphone' : 'Phone number',
+  email: lang.value === 'fr' ? 'Adresse mail' : 'Email address',
+  requestMotif: lang.value === 'fr' ? 'Motif de la demande' : 'Request motive',
+  moreInfo: lang.value === 'fr' ? 'Informations complémentaires' : 'Additional information',
+}))
+
+const options = computed(() => [
+  { value: 'organization', label: lang.value === 'fr' ? 'Association' : 'Organization' },
+  { value: 'lawyer', label: lang.value === 'fr' ? 'Avocat' : 'Lawyer' },
+  { value: 'company', label: lang.value === 'fr' ? 'Entreprise' : 'Company' },
+  { value: 'individual', label: lang.value === 'fr' ? 'Particulier' : 'Individual' },
+])
+
 const form = reactive({
+  situation: '',
+  organizationName: '',
+  lawyerName: '',
+  companyName: '',
   lastName: '',
   firstName: '',
+  phoneNumber: '',
+  email: '',
   birthDate: '',
   landDate: '',
-  situation: '',
   requestMotif: '',
   moreInfo: ''
 })
 
 const resetForm = () => {
+  form.situation = '',
+  form.organizationName = '',
+  form.lawyerName = '',
+  form.companyName = '',
   form.lastName = '',
-    form.firstName = '',
-    form.birthDate = '',
-    form.landDate = '',
-    form.situation = '',
-    form.requestMotif = '',
-    form.moreInfo = ''
+  form.firstName = '',
+  form.phoneNumber = '',
+  form.email = '',
+  form.birthDate = '',
+  form.landDate = '',
+  form.requestMotif = '',
+  form.moreInfo = ''
 }
+
+onMounted(() => {
+  form.situation = 'individual'
+})
 
 const submitForm = async () => {
   try {
@@ -68,29 +105,47 @@ const submitForm = async () => {
     <form @submit.prevent="submitForm" class="flex justify-center items-center px-4 my-10 lg:my-0 lg:col-span-3">
       <div>
         <h1 class="text-center text-4xl pb-10">{{ contactLabel }}</h1>
+        <div class="flex justify-center mb-6">
+          <div class="relative w-full max-w-xs">
+            <select v-model="form.situation" class="appearance-none border border-gray-300 rounded-full p-2 px-6 w-full">
+              <option disabled value="">{{ situationLabel }}</option>
+              <option v-for="opt in options" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
+            </select>
+            <font-awesome-icon
+              icon="fa-solid fa-angle-down"
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none"
+            />
+          </div>
+        </div>
         <div class="flex justify-center items-center">
-          <div class="grid col-2 gap-5">
-            <input v-model="form.lastName" type="text" class="border border-gray-300 rounded-full p-2 px-6 w-full"
-              placeholder="Nom">
-            <input v-model="form.firstName" type="text" class="border border-gray-300 rounded-full p-2 px-6 w-full"
-              placeholder="Prenom">
-            <div class="col-span-2 sm:col-span-1">
+          <div class="grid grid-cols-6 gap-5 lg:w-3/4">
+            <input v-model="form.organizationName" v-if="form.situation === 'organization'" type="text" class="col-span-6 border border-gray-300 rounded-full p-2 px-6 w-full"
+              :placeholder="placeholders.organizationName">
+            <input v-model="form.lawyerName" v-if="form.situation === 'lawyer'" type="text" class="col-span-6 border border-gray-300 rounded-full p-2 px-6 w-full"
+              :placeholder="placeholders.lawyerName">
+            <input v-model="form.companyName" v-if="form.situation === 'company'" type="text" class="col-span-6 border border-gray-300 rounded-full p-2 px-6 w-full"
+              :placeholder="placeholders.companyName">
+            <input v-model="form.lastName" v-if="form.situation === 'individual'" type="text" class="col-span-3 border border-gray-300 rounded-full p-2 px-6 w-full"
+              :placeholder="placeholders.lastName">
+            <input v-model="form.firstName" v-if="form.situation === 'individual'" type="text" class="col-span-3 border border-gray-300 rounded-full p-2 px-6 w-full"
+              :placeholder="placeholders.firstName">
+            <input v-model="form.phoneNumber" type="tel" class="col-span-2 border border-gray-300 rounded-full p-2 px-6 w-full"
+              :placeholder="placeholders.phoneNumber">
+            <input v-model="form.email" type="email" class="col-span-4 border border-gray-300 rounded-full p-2 px-6 w-full"
+              :placeholder="placeholders.email">
+            <div class="col-span-6 sm:col-span-3" v-if="form.situation === 'individual'">
               <label for="with-corner-hint" class="block mb-1 ml-5 text-sm font-medium text-gray-700 w-full">{{ birthLabel }}</label>
-              <input v-model="form.birthDate" type="date" id="with-corner-hint"
-                class="border border-gray-300 rounded-full p-2 px-6 w-full">
+              <input v-model="form.birthDate" type="date" class="border border-gray-300 rounded-full p-2 px-6 w-full">
             </div>
-            <div class="col-span-2 sm:col-span-1">
+            <div class="col-span-6 sm:col-span-3" v-if="form.situation === 'individual'">
               <label for="with-corner-hint" class="block mb-1 ml-5 text-sm font-medium text-gray-700 w-full">{{ arrivalLabel }}</label>
               <input v-model="form.landDate" type="date" class="border border-gray-300 rounded-full p-2 px-6 w-full">
             </div>
-            <input v-model="form.situation" type="text"
-              class="col-span-2 border border-gray-300 rounded-full p-2 px-6 w-full"
-              placeholder="Situation administrative">
             <input v-model="form.requestMotif" type="text"
-              class="col-span-2 border border-gray-300 rounded-full p-2 px-6 w-full" placeholder="Motif de la demande">
+              class="col-span-6 border border-gray-300 rounded-full p-2 px-6 w-full" :placeholder="placeholders.requestMotif">
             <textarea v-model="form.moreInfo" type="text"
-              class="col-span-2 h-30 border border-gray-300 rounded-[20px] p-2 px-6 w-full"
-              placeholder="Informations complémentaires"></textarea>
+              class="col-span-6 h-30 border border-gray-300 rounded-[20px] p-2 px-6 w-full"
+              :placeholder="placeholders.moreInfo"></textarea>
           </div>
         </div>
         <div class="flex justify-center mt-6">

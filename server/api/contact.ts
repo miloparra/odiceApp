@@ -19,15 +19,49 @@ export default defineEventHandler(async (event) => {
         from: `"${body.name}" <${body.email}>`,
         to: process.env.SMTP_TO,
         subject: 'Nouveau message depuis le site',
-        text: `
-            Nom : ${body.lastName}
-            Prenom : ${body.firstName}
-            Date de naissance : ${body.birthDate}
-            Date d'arrivée en France : ${body.landDate}
-            Situation administrative : ${body.situation}
+        text: ''
+    }
+
+    switch (body.situation) {
+        case 'organization':
+            mailOptions.text = `
+            Nom de l'association : ${body.organizationName}
+            Numéro de téléphone : ${body.phoneNumber}
+            Adresse mail : ${body.email}
             Motif de la demande : ${body.requestMotif}
             Informations complémentaires : ${body.moreInfo}
         `
+            break;
+        case 'lawyer':
+            mailOptions.text = `
+            Nom du cabinet : ${body.lawyerName}
+            Numéro de téléphone : ${body.phoneNumber}
+            Adresse mail : ${body.email}
+            Motif de la demande : ${body.requestMotif}
+            Informations complémentaires : ${body.moreInfo}
+        `
+            break;
+        case 'company':
+            mailOptions.text = `
+            Nom de l'entreprise : ${body.companyName}
+            Numéro de téléphone : ${body.phoneNumber}
+            Adresse mail : ${body.email}
+            Motif de la demande : ${body.requestMotif}
+            Informations complémentaires : ${body.moreInfo}
+        `
+            break;
+        case 'individual':
+            mailOptions.text = `
+            Nom : ${body.lastName}
+            Prenom : ${body.firstName}
+            Numéro de téléphone : ${body.phoneNumber}
+            Adresse mail : ${body.email}
+            Date de naissance : ${body.birthDate}
+            Date d'arrivée en France : ${body.landDate}
+            Motif de la demande : ${body.requestMotif}
+            Informations complémentaires : ${body.moreInfo}
+        `
+            break;
     }
 
     try {
