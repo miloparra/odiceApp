@@ -2,14 +2,14 @@
 const { $contentful } = useNuxtApp()
 
 useHead({
-  title: 'Odicé - Services juridiques | Immigration en France',
+  title: 'Odicé - Services | Immigration en France',
   meta: [
     {
       name: 'description',
-      content: 'Odicé propose un accompagnement complet : demandes de visa, régularisation, titres de séjour, naturalisation, droit de la famille, et autres démarches juridiques liées à l’immigration.'
+      content: 'Odicé propose un accompagnement complet : demandes de visa, régularisation, titres de séjour, naturalisation, droit de la famille, et autres démarches liées à l’immigration.'
     },
-    { property: 'og:title', content: 'Odicé - Services d’accompagnement juridique' },
-    { property: 'og:description', content: 'Découvrez les services juridiques proposés par Odicé pour vous aider dans vos démarches administratives et migratoires en France.' },
+    { property: 'og:title', content: 'Odicé - Services d’accompagnement' },
+    { property: 'og:description', content: 'Découvrez les services proposés par Odicé pour vous aider dans vos démarches administratives et migratoires en France.' },
     { property: 'og:url', content: 'https://odispe.fr/services' }
   ]
 })

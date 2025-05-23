@@ -8,8 +8,8 @@ useHead({
       name: 'description',
       content: 'Accédez à des documents gratuits préparés par Odicé : guides pratiques, fiches d’information, listes de questions, et ressources utiles pour préparer vos démarches en France.'
     },
-    { property: 'og:title', content: 'Odicé - Guides & documents juridiques' },
-    { property: 'og:description', content: 'Téléchargez des ressources juridiques fiables créées par Odicé pour faciliter votre projet d’installation en France.' },
+    { property: 'og:title', content: 'Odicé - Guides & documents' },
+    { property: 'og:description', content: 'Téléchargez des ressources fiables créées par Odicé pour faciliter votre projet d’installation en France.' },
     { property: 'og:url', content: 'https://odispe.fr/ressources' }
   ]
 })

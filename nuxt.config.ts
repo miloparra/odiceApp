@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Odicé - Accompagnement juridique en immigration | Michel Droubay',
+      title: 'Odicé - Assistant immigration | Michel Droubay',
       htmlAttrs: {
         lang: 'fr'
       },
@@ -14,11 +14,11 @@ export default defineNuxtConfig({
         // Description globale
         {
           name: 'description',
-          content: 'Odicé est une structure fondée par Michel Droubay, juriste spécialisé en droit international, qui accompagne les personnes étrangères dans leurs démarches d’immigration en France.'
+          content: 'Odicé est une structure fondée par Michel Droubay, spécialiste en droit international, qui accompagne les personnes étrangères dans leurs démarches d’immigration en France.'
         },
         {
           name: 'keywords',
-          content: 'Odicé, immigration France, juriste immigration, Michel Droubay, droit des étrangers, titre de séjour, visa, naturalisation, aide juridique, droit international'
+          content: 'Odicé, immigration France, Michel Droubay, droit des étrangers, titre de séjour, visa, naturalisation, droit international'
         },
         { name: 'author', content: 'Michel Droubay - Odicé' },
 
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Odicé - Aide à l’immigration en France' },
         {
           property: 'og:description',
-          content: 'Odicé accompagne les étrangers dans leur projet d’installation en France, avec un suivi juridique personnalisé assuré par Michel Droubay.'
+          content: 'Odicé accompagne les étrangers dans leur projet d’installation en France, avec un suivi personnalisé assuré par Michel Droubay.'
         },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://odice.fr' }, // ← mets ton domaine ici
@@ -34,10 +34,10 @@ export default defineNuxtConfig({
 
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Odicé - Aide juridique à l’immigration' },
+        { name: 'twitter:title', content: 'Odicé - Assistant immigration | Michel Droubay' },
         {
           name: 'twitter:description',
-          content: 'Conseils et accompagnement juridique pour les démarches d’immigration en France par Michel Droubay.'
+          content: 'Conseils et accompagnement pour les démarches d’immigration en France par Michel Droubay.'
         },
         { name: 'twitter:image', content: 'https://odice.fr/og-image.jpg' }
       ],
