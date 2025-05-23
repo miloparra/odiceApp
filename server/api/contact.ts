@@ -16,14 +16,15 @@ export default defineEventHandler(async (event) => {
     })
 
     const mailOptions = {
-        from: `"${body.name}" <${body.email}>`,
+        from: ``,
         to: process.env.SMTP_TO,
-        subject: 'Nouveau message depuis le site',
-        text: ''
+        subject: `"${body.requestMotif}"`,
+        text: ``
     }
 
     switch (body.situation) {
         case 'organization':
+            mailOptions.from = `"${body.organizationName}"`
             mailOptions.text = `
             Nom de l'association : ${body.organizationName}
             Numéro de téléphone : ${body.phoneNumber}
@@ -33,6 +34,7 @@ export default defineEventHandler(async (event) => {
         `
             break;
         case 'lawyer':
+            mailOptions.from = `"${body.lawyerName}"`
             mailOptions.text = `
             Nom du cabinet : ${body.lawyerName}
             Numéro de téléphone : ${body.phoneNumber}
@@ -42,6 +44,7 @@ export default defineEventHandler(async (event) => {
         `
             break;
         case 'company':
+            mailOptions.from = `"${body.companyName}"`
             mailOptions.text = `
             Nom de l'entreprise : ${body.companyName}
             Numéro de téléphone : ${body.phoneNumber}
@@ -51,6 +54,7 @@ export default defineEventHandler(async (event) => {
         `
             break;
         case 'individual':
+            mailOptions.from = `"${body.firstName}" ""${body.firstName}"`
             mailOptions.text = `
             Nom : ${body.lastName}
             Prenom : ${body.firstName}
