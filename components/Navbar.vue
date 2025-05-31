@@ -56,7 +56,7 @@ const textColorClass = computed(() => isTranparentTheme.value ? 'text-white font
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-52 p-2 shadow">
                     <li>
-                        <NuxtLink to="/about">{{ aboutTab }}</NuxtLink>
+                        <NuxtLink :to="{ path: '/about', hash: '#about'}">{{ aboutTab }}</NuxtLink>
                     </li>
                     <li>
                         <NuxtLink to="/services">Services</NuxtLink>
@@ -76,7 +76,7 @@ const textColorClass = computed(() => isTranparentTheme.value ? 'text-white font
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1 space-x-10" :class="textColorClass">
                 <li>
-                    <NuxtLink to="/about" class="uppercase">{{ aboutTab }}</NuxtLink>
+                    <NuxtLink :to="{ path: '/about', hash: '#about'}" class="uppercase">{{ aboutTab }}</NuxtLink>
                 </li>
                 <li>
                     <NuxtLink to="/services" class="uppercase">Services</NuxtLink>
