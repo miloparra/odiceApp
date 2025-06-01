@@ -1,14 +1,15 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { onMounted, onUnmounted, ref, computed } from 'vue'
-import fullLogoW from '@/public/logo/fullLogoW.png';
-import fullLogoB from '@/public/logo/fullLogoB.png';
+import { onMounted, onUnmounted, ref, computed, watch } from 'vue'
+import fullLogoW from '@/public/logo/fullLogoW.png'
+import fullLogoB from '@/public/logo/fullLogoB.png'
+
 const route = useRoute()
 const lang = useLang()
 
 function changeLang(locale) {
-    lang.value = locale
-    useCookie('lang').value = locale
+  lang.value = locale
+  useCookie('lang').value = locale
 }
 
 const aboutTab = computed(() =>
@@ -20,7 +21,7 @@ const resourcesTab = computed(() =>
 )
 
 const scrolled = ref(false)
-const threshold = 80 // px before the fond change
+const threshold = 80
 
 const handleScroll = () => {
   scrolled.value = window.scrollY > threshold
@@ -29,75 +30,102 @@ const handleScroll = () => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
 })
-
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-const isTranparentTheme = computed(() => {
-  return route.path === '/about' && !scrolled.value
-})
+const isTranparentTheme = computed(() =>
+  route.path === '/about' && !scrolled.value
+)
 
-const navbarClasses = computed(() => isTranparentTheme.value ? 'bg-transparent' : 'bg-white shadow-sm')
-const logoSrc = computed(() => isTranparentTheme.value ? fullLogoW : fullLogoB)
-const textColorClass = computed(() => isTranparentTheme.value ? 'text-white font-medium' : 'text-black')
+const navbarClasses = computed(() =>
+  isTranparentTheme.value ? 'bg-transparent' : 'bg-white shadow-sm'
+)
+const logoSrc = computed(() =>
+  isTranparentTheme.value ? fullLogoW : fullLogoB
+)
+const textColorClass = computed(() =>
+  isTranparentTheme.value ? 'text-white font-medium' : 'text-black'
+)
+
+// 👉 Gestion de la sidebar
+const sidebarOpen = ref(false)
+
+const toggleSidebar = () => {
+  sidebarOpen.value = !sidebarOpen.value
+}
+
+// Empêcher le scroll quand la sidebar est ouverte
+watch(sidebarOpen, (isOpen) => {
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+})
 </script>
 
 <template>
-    <div class="navbar sticky top-0 z-50 transition-colors duration-1000" :class="navbarClasses">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden" :class="textColorClass">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h8m-8 6h16" />
-                    </svg>
-                </div>
-                <ul tabindex="0" class="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-52 p-2 shadow">
-                    <li>
-                        <NuxtLink :to="{ path: '/about', hash: '#about'}">{{ aboutTab }}</NuxtLink>
-                    </li>
-                    <li>
-                        <NuxtLink to="/services">Services</NuxtLink>
-                    </li>
-                    <li>
-                        <NuxtLink to="/ressources">{{ resourcesTab }}</NuxtLink>
-                    </li>
-                    <li>
-                        <NuxtLink to="/contact">Contact</NuxtLink>
-                    </li>
-                </ul>
-            </div>
-            <NuxtLink to="/about">
-                <img class="w-20 lg:w-27 ml-2" :src="logoSrc" alt="Logo" />
-            </NuxtLink>
-        </div>
-        <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1 space-x-10" :class="textColorClass">
-                <li>
-                    <NuxtLink :to="{ path: '/about', hash: '#about'}" class="uppercase">{{ aboutTab }}</NuxtLink>
-                </li>
-                <li>
-                    <NuxtLink to="/services" class="uppercase">Services</NuxtLink>
-                </li>
-                <li>
-                    <NuxtLink to="/ressources" class="uppercase">{{ resourcesTab }}</NuxtLink>
-                </li>
-                <li>
-                    <NuxtLink to="/contact" class="uppercase">Contact</NuxtLink>
-                </li>
-            </ul>
-        </div>
-        <div class="navbar-end">
-            <a :class="['filter hover:filter hover:brightness-100 mr-4', lang === 'fr' ? '' : 'brightness-60']"
-                @click="changeLang('fr')">
-                <span class="fi fi-fr w-6 h-4 rounded-full"></span>
-            </a>
-            <a :class="['filter hover:filter hover:brightness-100 mr-4', lang === 'en-US' ? '' : 'brightness-60']"
-                @click="changeLang('en-US')">
-                <span class="fi fi-gb w-6 h-4 rounded-full"></span>
-            </a>
-        </div>
+  <div class="navbar sticky top-0 z-50 transition-colors duration-1000" :class="navbarClasses">
+    <div class="navbar-start">
+      <div class="lg:hidden">
+        <button @click="toggleSidebar" :class="textColorClass">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+        </button>
+      </div>
+      <NuxtLink to="/about">
+        <img class="w-20 lg:w-27 ml-2" :src="logoSrc" alt="Logo" />
+      </NuxtLink>
     </div>
+
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 space-x-10" :class="textColorClass">
+        <li><NuxtLink :to="{ path: '/about', hash: '#about'}" class="uppercase">{{ aboutTab }}</NuxtLink></li>
+        <li><NuxtLink to="/services" class="uppercase">Services</NuxtLink></li>
+        <li><NuxtLink to="/ressources" class="uppercase">{{ resourcesTab }}</NuxtLink></li>
+        <li><NuxtLink to="/contact" class="uppercase">Contact</NuxtLink></li>
+      </ul>
+    </div>
+
+    <div class="navbar-end">
+      <a :class="['filter hover:filter hover:brightness-100 mr-4', lang === 'fr' ? '' : 'brightness-60']" @click="changeLang('fr')">
+        <span class="fi fi-fr w-6 h-4 rounded-full"></span>
+      </a>
+      <a :class="['filter hover:filter hover:brightness-100 mr-4', lang === 'en-US' ? '' : 'brightness-60']" @click="changeLang('en-US')">
+        <span class="fi fi-gb w-6 h-4 rounded-full"></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar (mobile) -->
+  <transition name="slide">
+    <div v-if="sidebarOpen" class="fixed inset-0 z-50 bg-white flex flex-col p-6 transition-transform duration-500 transform translate-x-0">
+      <button class="self-end mb-6" @click="toggleSidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <ul class="space-y-4 text-lg">
+        <li><NuxtLink @click="toggleSidebar" :to="{ path: '/about', hash: '#about'}">{{ aboutTab }}</NuxtLink></li>
+        <li><NuxtLink @click="toggleSidebar" to="/services">Services</NuxtLink></li>
+        <li><NuxtLink @click="toggleSidebar" to="/ressources">{{ resourcesTab }}</NuxtLink></li>
+        <li><NuxtLink @click="toggleSidebar" to="/contact">Contact</NuxtLink></li>
+      </ul>
+    </div>
+  </transition>
 </template>
+
+<style>
+.slide-enter-from {
+  transform: translateX(-100%);
+}
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s ease;
+}
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+</style>
