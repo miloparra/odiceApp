@@ -64,7 +64,7 @@ watch(sidebarOpen, (isOpen) => {
 <template>
   <div class="navbar sticky top-0 z-50 transition-colors duration-1000" :class="navbarClasses">
     <div class="navbar-start">
-      <div class="lg:hidden">
+      <div class="lg:hidden flex items-center justify-center ml-3">
         <button @click="toggleSidebar" :class="textColorClass">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -73,7 +73,7 @@ watch(sidebarOpen, (isOpen) => {
           </svg>
         </button>
       </div>
-      <NuxtLink to="/about">
+      <NuxtLink to="/about" class="ml-2">
         <img class="w-20 lg:w-27 ml-2" :src="logoSrc" alt="Logo" />
       </NuxtLink>
     </div>
