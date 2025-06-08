@@ -99,7 +99,7 @@ watch(sidebarOpen, (isOpen) => {
 
   <!-- Sidebar (mobile) -->
   <transition name="slide">
-    <div v-if="sidebarOpen" class="fixed inset-0 z-50 bg-white flex flex-col p-6 transition-transform duration-500 transform translate-x-0">
+    <div v-if="sidebarOpen" class="fixed inset-0 z-51 bg-white flex flex-col p-6 transition-transform duration-500 transform translate-x-0">
       <button class="self-end mb-6" @click="toggleSidebar">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
