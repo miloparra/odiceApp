@@ -91,7 +91,7 @@ const contactLabel = computed(() =>
           relative
           text-justify
           w-5/6
-          mt-10 mb-10
+          mt-20 mb-20
           bg-gray-100
           p-7 lg:p-15
           text-base
