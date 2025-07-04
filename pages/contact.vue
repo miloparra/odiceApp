@@ -15,7 +15,7 @@ useHead({
 const lang = useLang()
 
 const contactLabel = computed(() =>
-  lang.value === 'fr' ? 'Me contacter' : 'Contact me'
+  lang.value === 'fr' ? 'Nous contacter' : 'Contact us'
 )
 const birthLabel = computed(() =>
   lang.value === 'fr' ? 'Date de naissance' : 'Date of birth'
