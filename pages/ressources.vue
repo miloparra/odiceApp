@@ -54,7 +54,7 @@ async function fetchRessources(locale) {
 }
 
 const message = computed(() =>
-  lang.value === 'fr' ? 'Des ressources arriveront prochainement !' : 'Resources will arrive soon!'
+  lang.value === 'fr' ? 'Des ressources arriveront prochainement !' : 'Resources will arrive soon !'
 )
 
 // Initial load
