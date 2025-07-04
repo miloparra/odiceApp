@@ -29,5 +29,5 @@ watch(lang, (newLang) => {
     <div class="flex justify-center">
         <hr class="w-40">
     </div>
-    <div class="py-10 px-12 lg:px-40 mt-5 text-justify">{{ legalNotices?.description }}</div>
+    <div class="py-10 px-12 lg:px-40 mt-5 text-justify whitespace-pre-line">{{ legalNotices?.description }}</div>
 </template>
