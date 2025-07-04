@@ -3,6 +3,8 @@ import { useRoute } from 'vue-router'
 import { onMounted, onUnmounted, ref, computed, watch } from 'vue'
 import fullLogoW from '@/public/logo/fullLogoW.png'
 import fullLogoB from '@/public/logo/fullLogoB.png'
+import fullLogoFreePalestineW from '@/public/logo/fullLogoFreePalestineW.png'
+import fullLogoFreePalestineB from '@/public/logo/fullLogoFreePalestineB.png'
 
 const route = useRoute()
 const lang = useLang()
@@ -41,9 +43,33 @@ const isTranparentTheme = computed(() =>
 const navbarClasses = computed(() =>
   isTranparentTheme.value ? 'bg-transparent' : 'bg-white shadow-sm'
 )
+
 const logoSrc = computed(() =>
   isTranparentTheme.value ? fullLogoW : fullLogoB
 )
+
+const logoFreePalestineSrc = computed(() =>
+  isTranparentTheme.value ? fullLogoFreePalestineW : fullLogoFreePalestineB
+)
+
+const currentLogo = ref(logoSrc.value)
+
+watch(logoSrc, (newLogo) => {
+  // Si on n’est pas en hover, on met à jour le logo normalement
+  if (!isHovering.value) currentLogo.value = newLogo
+})
+
+const isHovering = ref(false)
+
+const handleMouseOver = () => {
+  isHovering.value = true
+  currentLogo.value = logoFreePalestineSrc.value
+}
+
+const handleMouseLeave = () => {
+  isHovering.value = false
+  currentLogo.value = logoSrc.value
+}
 const textColorClass = computed(() =>
   isTranparentTheme.value ? 'text-white font-medium' : 'text-black'
 )
@@ -74,7 +100,13 @@ watch(sidebarOpen, (isOpen) => {
         </button>
       </div>
       <NuxtLink to="/about" class="ml-2">
-        <img class="w-20 lg:w-27 ml-2" :src="logoSrc" alt="Logo" />
+        <img
+          class="w-20 lg:w-27 ml-2 transition-opacity duration-200"
+          :src="currentLogo"
+          alt="Logo"
+          @mouseover="handleMouseOver"
+          @mouseleave="handleMouseLeave"
+        />
       </NuxtLink>
     </div>
 
