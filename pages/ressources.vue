@@ -53,6 +53,10 @@ async function fetchRessources(locale) {
   }
 }
 
+const message = computed(() =>
+  lang.value === 'fr' ? 'Des ressources arriveront prochainement !' : 'Resources will arrive soon!'
+)
+
 // Initial load
 onMounted(() => {
   fetchRessources(lang.value)
@@ -66,6 +70,9 @@ watch(lang, (newLang) => {
 
 <template>
   <div class="flex justify-center items-center mt-10 mb-10">
+    <div v-if="ressources.length === 0">
+      {{ message }}
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 justify-items-center">
       <div v-for="ressource in ressources" :key="ressource.sys.id" class="card bg-white w-9/10 lg:w-96 shadow-sm">
         <figure>
