@@ -1,5 +1,15 @@
 <template>
-    <div style="height: calc(100vh - 185px)" class="flex justify-center items-center">
-        <h1 class="text-2xl">Mentions légales</h1>
+    <h1 class="text-xl lg:text-3xl text-center mt-30 mb-15">Mentions légales</h1>
+    <div class="flex justify-center">
+        <hr class="w-40">
     </div>
+    <div class="py-10 px-12 lg:px-40 mt-5 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sem metus, sodales nec commodo vitae, sagittis sed magna. Vestibulum sed gravida felis. Ut efficitur dolor sit amet nibh lacinia porta. Sed eleifend lorem semper nisi consectetur vestibulum. Suspendisse ultrices ex nec pulvinar ullamcorper. Nulla sed commodo ligula. Nunc a pretium velit. Ut rhoncus facilisis justo a posuere. Vivamus volutpat libero nec sem auctor varius. Suspendisse sed turpis at lorem tempus condimentum in non lacus. Pellentesque erat dui, rhoncus a augue nec, porttitor finibus orci. Phasellus faucibus rhoncus lectus, a posuere ante gravida et. Proin lobortis risus mi, condimentum vehicula metus euismod nec. Donec nisl massa, fringilla eget bibendum id, tincidunt eget velit.
+
+Duis tempus accumsan posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque efficitur placerat diam ac bibendum. Suspendisse est leo, eleifend vel ultricies id, lobortis sit amet libero. Aliquam luctus mi nec vehicula euismod. Vivamus consectetur dui ac sapien gravida volutpat. Praesent sapien nisi, dictum nec faucibus dignissim, dapibus nec enim.
+
+Nunc ultricies ullamcorper ultricies. Praesent gravida laoreet tortor, et dapibus risus pharetra eget. Duis viverra, eros non hendrerit sollicitudin, arcu lacus auctor ipsum, nec ultricies nulla lorem vel augue. Morbi sit amet euismod purus. Sed semper tristique ex vel gravida. Integer porta dignissim efficitur. Nulla facilisi.
+
+Duis ultricies bibendum sem, eget scelerisque tortor cursus at. Aliquam luctus, nibh sit amet lacinia egestas, purus magna scelerisque dui, eget condimentum diam dui et ante. Ut egestas leo ut sapien maximus eleifend. Mauris sed mi purus. Praesent id convallis purus. Cras laoreet tristique augue, quis lacinia tellus sollicitudin non. In eu ultricies elit. Vestibulum ut dolor maximus, mattis leo eu, placerat turpis. Etiam est nisi, sodales ac urna vitae, porta fringilla neque. Phasellus ornare elementum malesuada. Vivamus aliquam lorem sit amet molestie tempor. Etiam euismod lacus vitae massa congue, id tincidunt magna placerat.
+
+Quisque maximus faucibus odio id posuere. Quisque sed libero euismod, consequat orci non, elementum ex. Proin et lobortis leo. Ut rhoncus purus vitae ex ullamcorper placerat. Curabitur bibendum felis sit amet tristique ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ut rhoncus eros. Nunc at sollicitudin metus. Suspendisse ornare ultrices bibendum. Aliquam pretium vulputate metus, at commodo nunc dapibus et. Nullam sit amet augue ut nisi consequat auctor ac eu nulla. Etiam id lobortis metus, ac feugiat erat. Etiam vel sapien quam. Sed accumsan eros in feugiat congue. Cras vulputate sodales tempor.</div>
 </template>
