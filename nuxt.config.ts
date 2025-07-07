@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Odicé - Assistant immigration | Michel Droubay',
+      title: 'Michel Droubay | Odicé - Assistant immigration',
       htmlAttrs: {
         lang: 'fr'
       },
