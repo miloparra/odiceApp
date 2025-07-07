@@ -33,20 +33,25 @@ async function fetchServices(locale) {
       locale: defaultLocale
     })
 
-    // 3. Fusion
-    services.value = localized.items.map(service => {
-      const defaultService = defaults.items.find(
-        s => s.sys.id === service.sys.id
-      )
+    console.log(localized)
+    console.log(defaults)
 
-      return {
-        ...service,
-        fields: {
-          ...service.fields,
-          pictogram: defaultService?.fields?.pictogram
+    // 3. Fusion
+    services.value = localized.items
+      .sort((a, b) => (a.fields.order ?? 0) - (b.fields.order ?? 0))
+      .map(service => {
+        const defaultService = defaults.items.find(
+          s => s.sys.id === service.sys.id
+        )
+
+        return {
+          ...service,
+          fields: {
+            ...service.fields,
+            pictogram: defaultService?.fields?.pictogram
+          }
         }
-      }
-    })
+      })
   } catch (err) {
     console.error('❌ Services recovery error:', err)
   }
