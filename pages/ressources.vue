@@ -2,14 +2,14 @@
 const { $contentful } = useNuxtApp()
 
 useHead({
-  title: 'Odicé - Ressources gratuites | Aide à l’immigration',
+  title: 'ODicé - Ressources gratuites | Aide à l’immigration',
   meta: [
     {
       name: 'description',
-      content: 'Accédez à des documents gratuits préparés par Odicé : guides pratiques, fiches d’information, listes de questions, et ressources utiles pour préparer vos démarches en France.'
+      content: 'Accédez à des documents gratuits préparés par ODicé : guides pratiques, fiches d’information, listes de questions, et ressources utiles pour préparer vos démarches en France.'
     },
-    { property: 'og:title', content: 'Odicé - Guides & documents' },
-    { property: 'og:description', content: 'Téléchargez des ressources fiables créées par Odicé pour faciliter votre projet d’installation en France.' },
+    { property: 'og:title', content: 'ODicé - Guides & documents' },
+    { property: 'og:description', content: 'Téléchargez des ressources fiables créées par ODicé pour faciliter votre projet d’installation en France.' },
     { property: 'og:url', content: 'https://odispe.fr/ressources' }
   ]
 })

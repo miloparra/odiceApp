@@ -1,13 +1,13 @@
 <script setup>
 useHead({
-  title: 'Odicé - Contact | Conseil en immigration avec Michel Droubay',
+  title: 'ODicé - Contact | Conseil en immigration avec Michel Droubay',
   meta: [
     {
       name: 'description',
-      content: 'Prenez contact avec Michel Droubay via Odicé pour recevoir un accompagnement personnalisé selon votre situation administrative et vos démarches d’immigration.'
+      content: 'Prenez contact avec Michel Droubay via ODicé pour recevoir un accompagnement personnalisé selon votre situation administrative et vos démarches d’immigration.'
     },
-    { property: 'og:title', content: 'Contactez Odicé - Michel Droubay' },
-    { property: 'og:description', content: 'Formulaire de contact pour bénéficier de l’accompagnement d’Odicé dans votre projet d’immigration en France.' },
+    { property: 'og:title', content: 'Contactez ODicé - Michel Droubay' },
+    { property: 'og:description', content: 'Formulaire de contact pour bénéficier de l’accompagnement d’ODicé dans votre projet d’immigration en France.' },
     { property: 'og:url', content: 'https://odispe.fr/contact' }
   ]
 })
