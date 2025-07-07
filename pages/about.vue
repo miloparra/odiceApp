@@ -85,7 +85,7 @@ const contactLabel = computed(() =>
     </div>
   </section>
 
-  <section id="about">
+  <section id="about" class="scroll-mt-[65px]">
     <div class="flex justify-center mt-[-65px]">
       <div class="
           relative
