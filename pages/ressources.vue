@@ -34,20 +34,22 @@ async function fetchRessources(locale) {
     })
 
     // 3. Fusion
-    ressources.value = localized.items.map(ressource => {
-      const defaultRessource = defaults.items.find(
-        s => s.sys.id === ressource.sys.id
-      )
+    ressources.value = localized.items
+      .sort((a, b) => (a.fields.order ?? 0) - (b.fields.order ?? 0))
+      .map(ressource => {
+        const defaultRessource = defaults.items.find(
+          s => s.sys.id === ressource.sys.id
+        )
 
-      return {
-        ...ressource,
-        fields: {
-          ...ressource.fields,
-          pictogram: defaultRessource?.fields?.pictogram,
-          document: defaultRessource?.fields?.document
+        return {
+          ...ressource,
+          fields: {
+            ...ressource.fields,
+            pictogram: defaultRessource?.fields?.pictogram,
+            document: defaultRessource?.fields?.document
+          }
         }
-      }
-    })
+      })
   } catch (err) {
     console.error('❌ Resource recovery error:', err)
   }
