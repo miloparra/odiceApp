@@ -54,6 +54,10 @@ const contactLabel = computed(() =>
 const serviceLabel = computed(() =>
   lang.value === 'fr' ? 'Nos services' : 'Our services'
 )
+
+const lernMoreLabel = computed(() =>
+  lang.value === 'fr' ? 'En savoir plus' : 'Learn more'
+)
 </script>
 
 <template>
@@ -84,7 +88,8 @@ const serviceLabel = computed(() =>
                   border-1
                   hover:bg-[oklch(45%_.24_277.023)]
                   hover:border-[oklch(45%_.24_277.023)]
-                  cursor-pointer">
+                  cursor-pointer
+                  transition-colors duration-300 ease-in-out">
                   {{ contactLabel }}
               </button>
             </NuxtLink>
@@ -98,10 +103,12 @@ const serviceLabel = computed(() =>
                   font-semibold
                   text-white
                   border-1
+                  lg:hover:font-medium
                   hover:text-black
                   hover:bg-[#8FDA59]
                   hover:border-[#8FDA59]
-                  cursor-pointer">
+                  cursor-pointer
+                  transition-colors duration-300 ease-in-out">
                   {{ serviceLabel }}
               </button>
             </NuxtLink>
@@ -129,6 +136,25 @@ const serviceLabel = computed(() =>
             object-cover
             p-7 pb-11 lg:pr-7 lg:pt-0 lg:pb-7 lg:pl-0" src="../public/michel.jpeg" />
           <p class="whitespace-pre-line">{{ about?.presentation }}</p>
+          <NuxtLink to="/services" class="flex justify-center mt-10">
+            <button class="
+                rounded-full
+                px-10
+                py-3
+                text-sm
+                lg:text-lg
+                font-semibold
+                text-[#8FDA59]
+                border-2
+                border-[#8FDA59]
+                lg:hover:font-medium
+                hover:text-black
+                hover:bg-[#8FDA59]
+                cursor-pointer
+                transition-colors duration-300 ease-in-out">
+                {{ lernMoreLabel }}
+            </button>
+          </NuxtLink>
           <p class="guillemets absolute right-[5px] bottom-[-75px] lg:bottom-[-100px] text-8xl lg:text-9xl text-zinc-600">"
           </p>
         </div>
