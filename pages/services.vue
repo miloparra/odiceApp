@@ -128,7 +128,8 @@ const contactQuestion = computed(() =>
             border-[oklch(45%_.24_277.023)]
             hover:text-white
             hover:bg-[oklch(45%_.24_277.023)]
-            cursor-pointer">
+            cursor-pointer
+            transition-colors duration-300 ease-in-out">
             {{ contactLabel }}
         </button>
       </NuxtLink>
