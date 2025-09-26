@@ -4,6 +4,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     const config = useRuntimeConfig()
 
+    // Configuration du transporteur SMTP
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
