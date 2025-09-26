@@ -17,6 +17,20 @@ useHead({
 const lang = useLang()
 const defaultLocale = 'en-US'
 
+const servicesIntroduction = ref(null)
+
+async function fetchServicesIntroduction(locale) {
+  try {
+    const entries = await $contentful.getEntries({
+      content_type: 'servicesIntroduction',
+      locale
+    })
+    servicesIntroduction.value = entries.items[0]?.fields || null
+  } catch (err) {
+    console.error('❌ "Services Introduction" recovery error:', err)
+  }
+}
+
 const services = ref([])
 
 async function fetchServices(locale) {
@@ -32,9 +46,6 @@ async function fetchServices(locale) {
       content_type: 'services',
       locale: defaultLocale
     })
-
-    console.log(localized)
-    console.log(defaults)
 
     // 3. Fusion
     services.value = localized.items
@@ -60,28 +71,67 @@ async function fetchServices(locale) {
 // Initial load
 onMounted(() => {
   fetchServices(lang.value)
+  fetchServicesIntroduction(lang.value)
 })
 
 // Refresh on lang change
 watch(lang, (newLang) => {
   fetchServices(newLang)
+  fetchServicesIntroduction(lang.value)
 })
+
+const contactLabel = computed(() =>
+  lang.value === 'fr' ? 'Nous contacter' : 'Contact us'
+)
+
+const contactQuestion = computed(() =>
+  lang.value === 'fr' ? 'Vous souhaitez optimiser vos démarches d’immigration professionnelle ?' : 'Do you want to optimize your professional immigration procedures?'
+)
 </script>
 
 <template>
-  <div class="flex justify-center items-center mt-10 mb-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 justify-items-center">
-      <div v-for="service in services" :key="service.sys.id" class="card bg-white w-9/10 lg:w-96 shadow-sm">
-        <figure>
-          <img class="h-70 scale-150 object-cover"
-          :src="`https:${service.fields.pictogram.fields.file.url}`"
-          :alt="service.fields.pictogram.fields.title || 'Service image'" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">{{ service.fields.title }}</h2>
-          <p>{{ service.fields.description }}</p>
+  <div class="bg-gray-50">
+    <div class="px-5 lg:px-60 py-10">
+      <div class="mb-10 p-5 flex justify-center lg:text-xl text-justify whitespace-pre-line">
+        {{ servicesIntroduction?.introduction }}
+      </div>
+      <div v-for="service in services" :key="service.sys.id">
+        <div class="collapse collapse-plus bg-base-100 border border-base-300 mb-2">
+          <input type="radio" name="my-accordion-3" checked="checked" />
+          <div class="collapse-title">
+            <div class="serviceTitle text-xl font-medium mb-1">{{ service.fields.title }}</div>
+            <div class="font-normal">{{ service.fields.shortDescription }}</div>
+          </div>
+          <div class="collapse-content flex justify-center items-center">
+            <div class="flex md:w-2/3 my-3 md:my-6 md:mr-24">
+              <img class="hidden md:block h-38 object-cover mr-10 mr rounded-full"
+              :src="`https:${service.fields.pictogram.fields.file.url}`"
+              :alt="service.fields.pictogram.fields.title || 'Service image'" />
+              <div class="text-justify">{{ service.fields.longDescription }}</div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="mt-10 p-5 flex justify-center lg:text-xl text-center">
+        {{ contactQuestion }}
+      </div>
+      <NuxtLink to="/contact" class="flex justify-center pb-10">
+        <button class="
+            rounded-full
+            px-10
+            py-3
+            text-sm
+            lg:text-lg
+            font-semibold
+            text-[oklch(45%_.24_277.023)]
+            border-2
+            border-[oklch(45%_.24_277.023)]
+            hover:text-white
+            hover:bg-[oklch(45%_.24_277.023)]
+            cursor-pointer">
+            {{ contactLabel }}
+        </button>
+      </NuxtLink>
     </div>
   </div>
 </template>
