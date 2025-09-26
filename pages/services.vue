@@ -103,7 +103,7 @@ const contactQuestion = computed(() =>
             <div class="font-normal">{{ service.fields.shortDescription }}</div>
           </div>
           <div class="collapse-content flex justify-center items-center">
-            <div class="flex md:w-2/3 my-3 md:my-6 md:mr-24">
+            <div class="flex items-center md:w-2/3 my-3 md:my-6 md:mr-24">
               <img class="hidden md:block h-38 object-cover mr-10 mr rounded-full"
               :src="`https:${service.fields.pictogram.fields.file.url}`"
               :alt="service.fields.pictogram.fields.title || 'Service image'" />
