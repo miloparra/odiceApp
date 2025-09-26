@@ -1,3 +1,15 @@
+<script setup>
+const lang = useLang()
+
+const legalNoticesLabel = computed(() =>
+  lang.value === 'fr' ? 'Mentions légales' : 'Legal Notices'
+)
+
+const privatePolicyLabel = computed(() =>
+  lang.value === 'fr' ? 'Politique de confidentialité' : 'Personal Data Policy'
+)
+</script>
+
 <template>
     <div class="
             flex flex-col lg:flex-row 
@@ -8,8 +20,8 @@
             h-30
             shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]
             z-50">
-        <NuxtLink to="/legalMentions" class="hover:underline">Mentions légales</NuxtLink>
+        <NuxtLink to="/legalMentions" class="hover:underline">{{ legalNoticesLabel }}</NuxtLink>
         <p class="hidden lg:block">|</p>
-        <NuxtLink to="/confidentiality" class="hover:underline">Politique de confidentialité</NuxtLink>
+        <NuxtLink to="/confidentiality" class="hover:underline">{{ privatePolicyLabel }}</NuxtLink>
     </div>
 </template>
