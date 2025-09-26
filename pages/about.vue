@@ -71,8 +71,8 @@ const serviceLabel = computed(() =>
               lg:text-6xl">
             {{ about?.title }}
           </h1>
-          <div class="flex justify-center gap-5">
-            <NuxtLink to="/contact" class="flex justify-center">
+          <div class="lg:flex lg:justify-center lg:gap-5">
+            <NuxtLink to="/contact" class="flex justify-center mb-3 lg:mb-0">
               <button class="
                   rounded-full
                   px-10
