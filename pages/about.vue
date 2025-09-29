@@ -1,4 +1,5 @@
 <script setup>
+import { marked } from 'marked'
 const { $contentful } = useNuxtApp()
 
 useHead({
@@ -24,7 +25,14 @@ async function fetchAbout(locale) {
       content_type: 'about',
       locale
     })
-    about.value = entries.items[0]?.fields || null
+    if (entries.items[0]) {
+      const fields = entries.items[0].fields
+      // Transformer le champ "presentation" en HTML
+      about.value = {
+        ...fields,
+        presentationHtml: marked.parse(fields.presentation || '')
+      }
+    }
   } catch (err) {
     console.error('❌ "About" recovery error:', err)
   }
@@ -135,7 +143,7 @@ const lernMoreLabel = computed(() =>
             h-70
             object-cover
             p-7 pb-11 lg:pr-7 lg:pt-0 lg:pb-7 lg:pl-0" src="../public/michel.jpeg" />
-          <p class="whitespace-pre-line">{{ about?.presentation }}</p>
+          <p class="prose whitespace-pre-line" v-html="about?.presentationHtml"></p>
           <NuxtLink to="/services" class="flex justify-center mt-10">
             <button class="
                 rounded-full
