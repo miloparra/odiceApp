@@ -134,7 +134,6 @@ const lernMoreLabel = computed(() =>
             mt-20 mb-20
             bg-white
             p-7 lg:p-15
-            text-base
             lg:text-lg">
           <p class="guillemets absolute top-[-18px] lg:top-[-25px] left-[2px] text-8xl lg:text-9xl text-zinc-600">"</p>
           <img class="
