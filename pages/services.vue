@@ -90,32 +90,32 @@ const contactQuestion = computed(() =>
 </script>
 
 <template>
-  <div class="bg-gray-50">
-    <div class="px-5 lg:px-60 py-10">
-      <div class="mb-10 p-5 flex justify-center lg:text-xl text-justify whitespace-pre-line">
-        {{ servicesIntroduction?.introduction }}
-      </div>
-      <div v-for="service in services" :key="service.sys.id">
-        <div class="collapse collapse-plus bg-base-100 border border-base-300 mb-2">
-          <input type="radio" name="my-accordion-3" checked="checked" />
-          <div class="collapse-title">
-            <div class="serviceTitle text-xl font-medium mb-1">{{ service.fields.title }}</div>
-            <div class="font-normal">{{ service.fields.shortDescription }}</div>
-          </div>
-          <div class="collapse-content flex justify-center items-center">
-            <div class="flex items-center md:w-2/3 my-3 md:my-6 md:mr-24">
-              <img class="hidden md:block h-38 object-cover mr-10 mr rounded-full"
-              :src="`https:${service.fields.pictogram.fields.file.url}`"
-              :alt="service.fields.pictogram.fields.title || 'Service image'" />
-              <div class="text-justify">{{ service.fields.longDescription }}</div>
-            </div>
+  <div class="px-5 lg:px-60 bg-gray-50">
+    <div class="p-5 py-5 lg:py-10 flex justify-center lg:text-xl text-justify whitespace-pre-line">
+      {{ servicesIntroduction?.introduction }}
+    </div>
+    <div v-for="service in services" :key="service.sys.id">
+      <div class="collapse collapse-plus bg-base-100 border border-base-300 mb-2">
+        <input type="radio" name="my-accordion-3" checked="checked" />
+        <div class="collapse-title">
+          <div class="serviceTitle lg:text-xl font-medium mb-1">{{ service.fields.title }}</div>
+          <div class="text-sm lg:text-base">{{ service.fields.shortDescription }}</div>
+        </div>
+        <div class="collapse-content flex justify-center items-center">
+          <div class="flex items-center md:w-2/3 my-3 md:my-6 md:mr-24">
+            <img class="hidden md:block h-38 object-cover mr-10 mr rounded-full"
+            :src="`https:${service.fields.pictogram.fields.file.url}`"
+            :alt="service.fields.pictogram.fields.title || 'Service image'" />
+            <div class="text-sm lg:text-base text-justify">{{ service.fields.longDescription }}</div>
           </div>
         </div>
       </div>
-      <div class="mt-10 p-5 flex justify-center lg:text-xl text-center">
+    </div>
+    <div class="p-5 pt-5 lg:pt-10 pb-8 lg:pb-13 space-y-5">
+      <div class="flex justify-center lg:text-xl text-center">
         {{ contactQuestion }}
       </div>
-      <NuxtLink to="/contact" class="flex justify-center pb-10">
+      <NuxtLink to="/contact" class="flex justify-center">
         <button class="
             rounded-full
             px-10
