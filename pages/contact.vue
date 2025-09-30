@@ -129,9 +129,9 @@ const submitForm = async () => {
               :placeholder="placeholders.lastName">
             <input v-model="form.firstName" v-if="form.situation === 'individual'" type="text" class="col-span-3 border border-gray-300 rounded-full p-2 px-6 w-full"
               :placeholder="placeholders.firstName">
-            <input v-model="form.phoneNumber" type="tel" class="col-span-2 border border-gray-300 rounded-full p-2 px-6 w-full"
+            <input v-model="form.phoneNumber" type="tel" class="col-span-6 sm:col-span-2 border border-gray-300 rounded-full p-2 px-6 w-full"
               :placeholder="placeholders.phoneNumber">
-            <input v-model="form.email" type="email" class="col-span-4 border border-gray-300 rounded-full p-2 px-6 w-full"
+            <input v-model="form.email" type="email" class="col-span-6 sm:col-span-4 border border-gray-300 rounded-full p-2 px-6 w-full"
               :placeholder="placeholders.email">
             <div class="col-span-6 sm:col-span-3" v-if="form.situation === 'individual'">
               <label for="with-corner-hint" class="block mb-1 ml-5 text-sm font-medium text-gray-700 w-full">{{ birthLabel }}</label>
