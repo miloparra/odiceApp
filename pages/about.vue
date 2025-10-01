@@ -129,7 +129,6 @@ const lernMoreLabel = computed(() =>
       <div class="flex justify-center mt-[-65px]">
         <div class="
             relative
-            text-justify
             w-5/6
             mt-20 mb-20
             bg-white
@@ -142,7 +141,7 @@ const lernMoreLabel = computed(() =>
             h-70
             object-cover
             p-7 pb-11 lg:pr-7 lg:pt-0 lg:pb-7 lg:pl-0" src="../public/michel.jpeg" />
-          <p class="prose whitespace-pre-line" v-html="about?.presentationHtml"></p>
+          <p class="prose md:text-justify whitespace-pre-line" v-html="about?.presentationHtml"></p>
           <NuxtLink to="/services" class="flex justify-center mt-10">
             <button class="
                 rounded-full
