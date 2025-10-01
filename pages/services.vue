@@ -91,7 +91,7 @@ const contactQuestion = computed(() =>
 
 <template>
   <div class="px-5 lg:px-60 bg-gray-50">
-    <div class="p-5 py-5 lg:py-10 flex justify-center lg:text-xl text-justify whitespace-pre-line">
+    <div class="p-5 py-5 lg:py-10 flex justify-center lg:text-xl whitespace-pre-line">
       {{ servicesIntroduction?.introduction }}
     </div>
     <div v-for="service in services" :key="service.sys.id">
