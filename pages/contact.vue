@@ -104,7 +104,16 @@ const submitForm = async () => {
     </div>
     <form @submit.prevent="submitForm" class="flex justify-center items-center px-4 my-10 lg:my-0 lg:col-span-3">
       <div>
-        <h1 class="text-center text-4xl pb-10">{{ contactLabel }}</h1>
+        <h1 class="text-center text-4xl pb-5 md:pb-10">{{ contactLabel }}</h1>
+        <div class="flex justify-center mb-5">
+          <a
+            href="https://www.linkedin.com/in/michel-droubay-357923206/?originalSubdomain=fr" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <font-awesome-icon icon="fa-brands fa-linkedin" class="text-3xl" />
+          </a>
+        </div>
         <div class="flex justify-center mb-6">
           <div class="relative w-full max-w-xs">
             <select v-model="form.situation" class="appearance-none border border-gray-300 rounded-full p-2 px-6 w-full">
