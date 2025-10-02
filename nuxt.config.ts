@@ -29,20 +29,36 @@ export default defineNuxtConfig({
           content: 'ODicé accompagne les étrangers dans leur projet d’installation en France, avec un suivi personnalisé assuré par Michel Droubay.'
         },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://odice.fr' }, // ← mets ton domaine ici
-        { property: 'og:image', content: 'https://odice.fr/og-image.jpg' }, // ← image de partage
+        { property: 'og:url', content: 'https://www.odice-immigration.com' },
+        { property: 'og:image', content: 'https://www.odice-immigration.com/seo/OpenGraph.jpg' },
 
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'ODicé - Assistant immigration | Michel Droubay' },
         {
-          name: 'twitter:description',
-          content: 'Conseils et accompagnement pour les démarches d’immigration en France par Michel Droubay.'
+          name: 'twitter:description', content: 'Conseils et accompagnement pour les démarches d’immigration en France par Michel Droubay.'
         },
-        { name: 'twitter:image', content: 'https://odice.fr/og-image.jpg' }
+        { name: 'twitter:image', content: 'https://www.odice-immigration.com/seo/Twitter.jpg' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'logo/iconBlack.png' }
+      ],
+      script: [
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "ODicé",
+            "url": "https://www.odice-immigration.com",
+            "logo": "https://www.odice-immigration.com/seo/KnowledgePanel.png",
+            "image": "https://www.odice-immigration.com/seo/Google.jpg",
+            "founder": {
+              "@type": "Person",
+              "name": "Michel Droubay"
+            }
+          })
+        }
       ]
     }
   },

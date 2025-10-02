@@ -5,13 +5,21 @@ const { $contentful } = useNuxtApp()
 useHead({
   title: 'ODicé - Assistant immigration | Michel Droubay',
   meta: [
+    // Description globale
     {
       name: 'description',
       content: 'ODicé, fondée par Michel Droubay, propose un accompagnement spécialisé pour les personnes souhaitant s’installer durablement en France.'
     },
+
+    // Open Graph
     { property: 'og:title', content: 'ODicé - Assistant immigration | Michel Droubay' },
     { property: 'og:description', content: 'Présentation de Michel Droubay et de la structure ODicé, spécialisée dans l’accompagnement à l’immigration en France.' },
-    { property: 'og:url', content: 'https://odispe.fr' }
+    { property: 'og:url', content: 'https://www.odice-immigration.com/about' },
+
+    // Twitter Cards
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'ODicé - Assistant immigration | Michel Droubay' },
+    { name: 'twitter:description', content: 'Présentation de Michel Droubay et de la structure ODicé, spécialisée dans l’accompagnement à l’immigration en France.' },
   ]
 })
 

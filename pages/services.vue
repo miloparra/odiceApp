@@ -4,13 +4,21 @@ const { $contentful } = useNuxtApp()
 useHead({
   title: 'ODicé - Services | Immigration en France',
   meta: [
+    // Description globale
     {
       name: 'description',
       content: 'ODicé propose un accompagnement complet : demandes de visa, régularisation, titres de séjour, naturalisation, droit de la famille, et autres démarches liées à l’immigration.'
     },
+
+    // Open Graph
     { property: 'og:title', content: 'ODicé - Services d’accompagnement' },
     { property: 'og:description', content: 'Découvrez les services proposés par ODicé pour vous aider dans vos démarches administratives et migratoires en France.' },
-    { property: 'og:url', content: 'https://odispe.fr/services' }
+    { property: 'og:url', content: 'https://www.odice-immigration.com/services' },
+
+    // Twitter Cards
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'ODicé - Services d’accompagnement' },
+    { name: 'twitter:description', content: 'Découvrez les services proposés par ODicé pour vous aider dans vos démarches administratives et migratoires en France.' },
   ]
 })
 
