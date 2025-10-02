@@ -15,13 +15,13 @@ useHead({
     { property: 'og:title', content: 'ODicé - Assistant immigration | Michel Droubay' },
     { property: 'og:description', content: 'Présentation de Michel Droubay et de la structure ODicé, spécialisée dans l’accompagnement à l’immigration en France.' },
     { property: 'og:url', content: 'https://www.odice-immigration.com/about' },
-    { property: 'og:image', content: 'https://www.odice-immigration.com/public/seo/OpenGraph.jpg' },
+    { property: 'og:image', content: 'https://www.odice-immigration.com/seo/OpenGraph.png' },
 
     // Twitter Cards
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'ODicé - Assistant immigration | Michel Droubay' },
     { name: 'twitter:description', content: 'Présentation de Michel Droubay et de la structure ODicé, spécialisée dans l’accompagnement à l’immigration en France.' },
-    { name: 'twitter:image', content: 'https://www.odice-immigration.com/public/seo/Twitter.jpg' }
+    { name: 'twitter:image', content: 'https://www.odice-immigration.com/seo/Twitter.png' }
   ]
 })
 
