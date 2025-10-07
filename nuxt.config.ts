@@ -30,7 +30,7 @@ export default defineNuxtConfig({
         },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://www.odice-immigration.com' },
-        { property: 'og:image', content: 'https://www.odice-immigration.com/seo/OpenGraph.png' },
+        { property: 'og:image', content: 'https://www.odice-immigration.com/seo/OpenGraphSlogan.png' },
 
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
         {
           name: 'twitter:description', content: 'Conseils et accompagnement pour les démarches d’immigration en France par Michel Droubay.'
         },
-        { name: 'twitter:image', content: 'https://www.odice-immigration.com/seo/Twitter.png' }
+        { name: 'twitter:image', content: 'https://www.odice-immigration.com/seo/TwitterSlogan.png' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'logo/iconBlack.png' }
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
             "name": "ODicé",
             "url": "https://www.odice-immigration.com",
             "logo": "https://www.odice-immigration.com/seo/KnowledgePanel.png",
-            "image": "https://www.odice-immigration.com/seo/Google.png",
+            "image": "https://www.odice-immigration.com/seo/GoogleSlogan.png",
             "founder": {
               "@type": "Person",
               "name": "Michel Droubay"
