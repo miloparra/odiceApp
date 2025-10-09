@@ -106,7 +106,7 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-1 lg:grid-cols-5 lg:gap-4">
+  <div class="grid grid-cols-1 lg:grid-cols-5 lg:gap-4 bg-white">
     <div class="hidden lg:block col-span-2">
       <img class="w-full h-[calc(100vh-65px)] object-cover" src="./../public/toulouse2.jpg" alt="">
     </div>
