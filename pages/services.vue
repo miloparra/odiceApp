@@ -88,23 +88,28 @@ watch(lang, (newLang) => {
   fetchServicesIntroduction(lang.value)
 })
 
-const contactLabel = computed(() =>
-  lang.value === 'fr' ? 'Nous contacter' : 'Contact us'
-)
-
 const contactQuestion = computed(() =>
   lang.value === 'fr' ? 'Vous souhaitez optimiser vos démarches d’immigration professionnelle ?' : 'Do you want to optimize your professional immigration procedures?'
+)
+
+const contactLabel = computed(() =>
+  lang.value === 'fr' ? 'Nous contacter' : 'Contact us'
 )
 </script>
 
 <template>
-  <div class="px-5 lg:px-60 bg-gray-50">
-    <div class="p-5 py-5 lg:py-10 flex justify-center lg:text-xl whitespace-pre-line">
-      {{ servicesIntroduction?.introduction }}
+  <div class="px-5 xl:px-60 xl:pt-10 pb-10">
+    <div class="px-5 py-10 space-y-2">
+      <div class="font-semibold text-4xl lg:text-6xl text-[#6c6bc1]">
+        {{ servicesIntroduction?.title }}
+      </div>
+      <div class="xl:w-150 text-[#200c4f] font-medium lg:text-2xl whitespace-pre-line">
+        {{ servicesIntroduction?.introduction }}
+      </div>
     </div>
     <div v-for="service in services" :key="service.sys.id">
-      <div class="collapse collapse-plus bg-base-100 border border-base-300 mb-2">
-        <input type="radio" name="my-accordion-3" checked="checked" />
+      <div class="collapse collapse-plus bg-base-100 rounded-2xl px-2 mb-4 shadow-sm hover:scale-102">
+        <input type="radio" name="my-accordion-3" />
         <div class="collapse-title">
           <div class="serviceTitle lg:text-xl font-medium mb-1">{{ service.fields.title }}</div>
           <div class="text-sm lg:text-base">{{ service.fields.shortDescription }}</div>
@@ -119,7 +124,7 @@ const contactQuestion = computed(() =>
         </div>
       </div>
     </div>
-    <div class="p-5 pt-5 lg:pt-10 pb-8 lg:pb-13 space-y-5">
+    <div class="px-5 py-5 lg:py-10 space-y-5">
       <div class="flex justify-center lg:text-xl text-center">
         {{ contactQuestion }}
       </div>
