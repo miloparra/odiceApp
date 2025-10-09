@@ -12,6 +12,7 @@ const privatePolicyLabel = computed(() =>
 
 <template>
     <div class="
+            bg-white
             flex flex-col lg:flex-row 
             justify-center items-center
             text-sm lg:text-base
