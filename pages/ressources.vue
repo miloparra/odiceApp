@@ -25,6 +25,20 @@ useHead({
 const lang = useLang()
 const defaultLocale = 'en-US'
 
+const ressourcesIntroduction = ref(null)
+
+async function fetchRessourcesIntroduction(locale) {
+  try {
+    const entries = await $contentful.getEntries({
+      content_type: 'ressourcesIntroduction',
+      locale
+    })
+    ressourcesIntroduction.value = entries.items[0]?.fields || null
+  } catch (err) {
+    console.error('❌ "Ressources Introduction" recovery error:', err)
+  }
+}
+
 const ressources = ref([])
 
 async function fetchRessources(locale) {
@@ -70,40 +84,52 @@ const message = computed(() =>
 // Initial load
 onMounted(() => {
   fetchRessources(lang.value)
+  fetchRessourcesIntroduction(lang.value)
 })
 
 // Refresh on lang change
 watch(lang, (newLang) => {
   fetchRessources(newLang)
+  fetchRessourcesIntroduction(lang.value)
 })
 </script>
 
 <template>
-  <div class="flex justify-center items-center mt-10 mb-10">
-    <div v-if="ressources.length === 0">
-      {{ message }}
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 justify-items-center">
-      <div v-for="ressource in ressources" :key="ressource.sys.id" class="card bg-white w-9/10 lg:w-96 shadow-sm">
-        <figure>
-          <img class="h-40 scale-150 object-cover"
-          :src="`https:${ressource.fields.pictogram.fields.file.url}`"
-          :alt="ressource.fields.pictogram.fields.title || 'Ressource image'" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">{{ ressource.fields.title }}</h2>
-          <p>{{ ressource.fields.description }}</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">
-              <a :href="`https:${ressource.fields.document.fields.file.url}`" download>
-                <font-awesome-icon icon="fa-solid fa-download" class="text-base mt-1" />
-              </a>
-            </button>
-            <button class="btn btn-primary">
-              <a :href="`https:${ressource.fields.document.fields.file.url}`" target="_blank" rel="noopener noreferrer">
-                <font-awesome-icon icon="fa-solid fa-eye" class="text-base mt-1" />
-              </a>
-            </button>
+  <div class="flex justify-center items-center xl:pt-10 pb-15">
+    <div>
+      <div class="px-10 lg:px-5 py-10 space-y-2">
+        <div class="font-semibold text-4xl lg:text-6xl text-[#6c6bc1]">
+          {{ ressourcesIntroduction?.title }}
+        </div>
+        <div class="xl:w-150 text-[#200c4f] font-medium lg:text-2xl whitespace-pre-line">
+          {{ ressourcesIntroduction?.introduction }}
+        </div>
+      </div>
+      <div v-if="ressources.length === 0">
+        {{ message }}
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 justify-items-center">
+        <div v-for="ressource in ressources" :key="ressource.sys.id" class="card bg-white w-9/10 lg:w-96 rounded-2xl shadow-sm">
+          <figure>
+            <img class="h-40 scale-150 object-cover"
+            :src="`https:${ressource.fields.pictogram.fields.file.url}`"
+            :alt="ressource.fields.pictogram.fields.title || 'Ressource image'" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title lg:text-xl font-medium">{{ ressource.fields.title }}</h2>
+            <p class="text-sm lg:text-base">{{ ressource.fields.description }}</p>
+            <div class="card-actions justify-end space-x-1">
+              <button class="btn btn-primary w-12 h-12 rounded-full hover:scale-103">
+                <a :href="`https:${ressource.fields.document.fields.file.url}`" download>
+                  <font-awesome-icon icon="fa-solid fa-download" class="text-base mt-1" />
+                </a>
+              </button>
+              <button class="btn btn-primary w-12 h-12 rounded-full hover:scale-103">
+                <a :href="`https:${ressource.fields.document.fields.file.url}`" target="_blank" rel="noopener noreferrer">
+                  <font-awesome-icon icon="fa-solid fa-eye" class="text-base mt-1" />
+                </a>
+              </button>
+            </div>
           </div>
         </div>
       </div>
