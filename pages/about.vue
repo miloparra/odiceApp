@@ -82,52 +82,58 @@ const lernMoreLabel = computed(() =>
       <img style="height: calc(100vh + 65px)" class="absolute w-full top-[-65px] filter brightness-80 object-cover"
       src="public/volcanIA2.png" alt="">
       <div class="reactive w-full h-screen top-[-65px]">
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-10">
-          <h1 class="
-              text-center
-              welcomeTitle
-              text-white
-              text-4xl
-              lg:text-6xl">
-            {{ about?.title }}
-          </h1>
-          <div class="lg:flex lg:justify-center lg:gap-5">
-            <NuxtLink to="/contact" class="flex justify-center mb-3 lg:mb-0">
-              <button class="
-                  rounded-full
-                  px-10
-                  py-3
-                  text-sm
-                  lg:text-lg
-                  font-semibold
-                  text-white
-                  border-1
-                  hover:bg-[oklch(45%_.24_277.023)]
-                  hover:border-[oklch(45%_.24_277.023)]
-                  cursor-pointer
-                  transition-colors duration-300 ease-in-out">
-                  {{ contactLabel }}
-              </button>
-            </NuxtLink>
-            <NuxtLink to="/services" class="flex justify-center">
-              <button class="
-                  rounded-full
-                  px-10
-                  py-3
-                  text-sm
-                  lg:text-lg
-                  font-semibold
-                  text-white
-                  border-1
-                  lg:hover:font-medium
-                  hover:text-black
-                  hover:bg-[#8FDA59]
-                  hover:border-[#8FDA59]
-                  cursor-pointer
-                  transition-colors duration-300 ease-in-out">
-                  {{ serviceLabel }}
-              </button>
-            </NuxtLink>
+        <div class="h-screen absolute flex flex-col justify-between top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div class="h-20"></div>
+          <div class="space-y-10">
+            <h1 class="
+                text-center
+                welcomeTitle
+                text-white
+                text-4xl
+                lg:text-6xl">
+              {{ about?.title }}
+            </h1>
+            <div class="lg:flex lg:justify-center lg:gap-5">
+              <NuxtLink to="/contact" class="flex justify-center mb-3 lg:mb-0">
+                <button class="
+                    rounded-full
+                    px-10
+                    py-3
+                    text-sm
+                    lg:text-lg
+                    font-semibold
+                    text-white
+                    border-1
+                    hover:bg-[oklch(45%_.24_277.023)]
+                    hover:border-[oklch(45%_.24_277.023)]
+                    cursor-pointer
+                    transition-colors duration-300 ease-in-out">
+                    {{ contactLabel }}
+                </button>
+              </NuxtLink>
+              <NuxtLink to="/services" class="flex justify-center">
+                <button class="
+                    rounded-full
+                    px-10
+                    py-3
+                    text-sm
+                    lg:text-lg
+                    font-semibold
+                    text-white
+                    border-1
+                    lg:hover:font-medium
+                    hover:text-black
+                    hover:bg-[#8FDA59]
+                    hover:border-[#8FDA59]
+                    cursor-pointer
+                    transition-colors duration-300 ease-in-out">
+                    {{ serviceLabel }}
+                </button>
+              </NuxtLink>
+            </div>
+          </div>
+          <div class="h-20 flex justify-center">
+            <NuxtLink to="/#about"><font-awesome-icon icon="fa-solid fa-arrow-down" class="text-white text-2xl lg:text-4xl animate-bounce"/></NuxtLink>
           </div>
         </div>
       </div>
